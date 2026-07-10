@@ -26,6 +26,19 @@ export const education = [
 ];
 
 export const experience = [
+  // {
+  //   role: "Web Developer",
+  //   org: "Terangin ITS",
+  //   period: "May 2026 — Present",
+  //   category: "Experience",
+  //   points: [
+  //     "Maintained a high performance web application using Next.js, TypeScript, and Tailwind CSS, incorporating Shadcn UI and Framer Motion for enhanced user interactivity and visual engagement.",
+  //     "Achieved 90+ Google Lighthouse scores in the production environment by optimizing frontend architecture and strictly adhering to web performance best practices.",
+  //     "Deployed and managed the application on a Virtual Private Server (VPS), handling server configuration to ensure 99% uptime and stable access for users.",
+  //     "Streamlined the deployment pipeline by integrating GitHub with Vercel, establishing an automated CI/CD workflow that ensured rapid iterations and stable production releases.",
+  //   ],
+  //   tags: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI", "Framer Motion", "VPS", "CI/CD"],
+  // },
   {
     role: "Web Development Intern",
     org: "Barunastra ITS Robotics Team",
@@ -54,7 +67,7 @@ export const experience = [
   {
     role: "Frontend Developer",
     org: "Society of Renewable Energy ITS",
-    period: "Aug 2025 — Present",
+    period: "Aug 2025 — Jun 2026",
     category: "Organizational",
     points: [
       "Developed the Associate Announcement Page using Next.js, React, and Shadcn UI, creating a seamless and responsive interface to effectively showcase new organizational members.",
@@ -65,7 +78,7 @@ export const experience = [
   {
     role: "Senior Frontend Developer",
     org: "TEDxITS 2026",
-    period: "Jan 2026 — Present",
+    period: "Jan 2026 — Jun 2026",
     category: "Committee",
     points: [
       "Conceptualized a modular form component library leveraging Shadcn UI, standardizing input patterns and validation logic to ensure UI consistency and accelerate feature development for the entire team.",
@@ -77,7 +90,7 @@ export const experience = [
   {
     role: "Senior Frontend Developer",
     org: "Ini Lho ITS 2026",
-    period: "Sep 2025 — Present",
+    period: "Sep 2025 — Feb 2026",
     category: "Committee",
     points: [
       "Delivered high-fidelity landing pages for multiple pages (Open Campus, Forda, Prestasi) using Next.js, Animate on Scroll and Tailwind CSS, ensuring consistent branding and responsive layouts across all viewports.",
@@ -89,7 +102,7 @@ export const experience = [
   {
     role: "Senior Frontend Developer",
     org: "Future Energy Summit 2026",
-    period: "Oct 2025 — Present",
+    period: "Oct 2025 — Jun 2026",
     category: "Committee",
     points: [
       "Developed the detailed Brand Ambassador Dashboard, integrating backend data to visualize specific metrics and candidate profiles, enabling the committee to make data-driven decisions efficiently.",
