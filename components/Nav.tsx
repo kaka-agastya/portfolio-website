@@ -1,0 +1,57 @@
+"use client";
+import { useEffect, useState } from "react";
+
+const sections = [
+  { id: "intro", label: "Intro" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "education", label: "Education" },
+  { id: "skills", label: "Skills" },
+  { id: "contact", label: "Contact" },
+];
+
+export default function Nav() {
+  const [active, setActive] = useState("intro");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: "-40% 0px -50% 0px" }
+    );
+    sections.forEach((s) => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <nav className="hidden xl:flex flex-col gap-3 fixed left-10 top-1/2 -translate-y-1/2 z-40">
+      {sections.map((s) => (
+        <a
+          key={s.id}
+          href={`#${s.id}`}
+          className="group flex items-center gap-3"
+          aria-label={s.label}
+        >
+          <span
+            className={`h-px transition-all duration-300 ${
+              active === s.id ? "w-8 bg-ink" : "w-4 bg-ink-mute group-hover:w-6 group-hover:bg-ink-soft"
+            }`}
+          />
+          <span
+            className={`font-mono text-[11px] tracking-wide uppercase transition-colors duration-300 ${
+              active === s.id ? "text-ink" : "text-ink-mute group-hover:text-ink-soft"
+            }`}
+          >
+            {s.label}
+          </span>
+        </a>
+      ))}
+    </nav>
+  );
+}
