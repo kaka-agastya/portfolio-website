@@ -1,14 +1,31 @@
+'use client'
 import { profile } from "@/data/cv";
 import { ArrowDownRight } from "lucide-react";
+import { useEffect, useState } from "react";
+
+function useTypewriter(text: string, speed = 40) {
+  const [display, setDisplay] = useState("");
+  useEffect(() => {
+    let i = 0;
+    const id = setInterval(() => {
+      setDisplay(text.slice(0, i + 1));
+      i++;
+      if (i === text.length) clearInterval(id);
+    }, speed);
+    return () => clearInterval(id);
+  }, [text, speed]);
+  return display;
+}
 
 export default function Hero() {
+  const typed = useTypewriter(profile.role);
   return (
     <section id="intro" className="min-h-screen flex flex-col justify-center px-6 lg:px-32 xl:px-40 max-w-content mx-auto">
 
       <div className="fade-up border border-line rounded-b-md rounded-tr-md p-8 lg:p-14 bg-white">
         <p className="font-mono text-xs text-ink-mute mb-6">
           <span className="text-ink">const</span> role <span className="text-ink">=</span>{" "}
-          <span className="text-ink-soft">"{profile.role}"</span>
+          <span className="text-ink-soft">"{typed}"</span>
           <span className="caret">▍</span>
         </p>
 

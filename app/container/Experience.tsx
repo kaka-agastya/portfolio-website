@@ -1,3 +1,4 @@
+import Reveal from "@/components/Reveal";
 import Section from "../../components/Section";
 import { experience } from "@/data/cv";
 
@@ -6,6 +7,7 @@ export default function Experience() {
     <Section id="experience" index="01" title="Experience">
       <div className="space-y-14">
         {experience.map((job, i) => (
+          <Reveal key={i} delay={i * 0.05}>
           <div key={i} className="grid lg:grid-cols-[200px_1fr] gap-4 lg:gap-10">
             <div>
               <p className="font-mono text-xs text-ink-mute">{job.period}</p>
@@ -36,6 +38,7 @@ export default function Experience() {
               </div>
             </div>
           </div>
+          </Reveal>
         ))}
       </div>
     </Section>
