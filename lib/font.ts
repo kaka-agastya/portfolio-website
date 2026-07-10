@@ -1,4 +1,4 @@
-import { Poppins as Poppin, JetBrains_Mono,  Space_Grotesk } from 'next/font/google'
+import { Poppins as Poppin,  Space_Grotesk, Fira_Code } from 'next/font/google'
 
 export const Poppins = Poppin({
   subsets: ['latin'],
@@ -15,10 +15,10 @@ export const Space = Space_Grotesk({
   variable: '--font-Space',
   preload: true,
 })
-export const JetBrains = JetBrains_Mono({
+export const FiraCode = Fira_Code({
   subsets: ['latin'],
-  weight: ['400', '600', '700', '800'],
+  weight: ['400', '600', '700'],
   display: 'swap',
-  variable: '--font-JetBrains',
+  variable: '--font-FiraCode',
   preload: true,
 })

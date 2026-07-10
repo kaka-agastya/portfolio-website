@@ -9,7 +9,7 @@
 
   --font-display: var(--font-Space), sans-serif;
   --font-body: var(--font-Poppins), sans-serif;
-  --font-mono: var(--font-JetBrains), monospace;
+  --font-mono: var(--font-FiraCode), monospace;
 
   --width-content: 1120px;
 }
