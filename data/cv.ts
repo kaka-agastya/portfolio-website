@@ -2,10 +2,10 @@ export const profile = {
   name: "Kaka Agastya Herlambang Wahyudi",
   role: "Frontend Web Developer",
   email: "kakagastya2@gmail.com",
-  phone: "+62 813-3294-5900",
+  phone: "+6281332945900",
   location: "East Java, Indonesia",
-  linkedin: "https://linkedin.com/in/your-linkedin-slug",
-  github: "https://github.com/your-github",
+  linkedin: "https://www.linkedin.com/in/kaka-agastya-herlambang-wahyudi/",
+  github: "https://github.com/kaka-agastya",
   summary:
     "Front Web Developer actively contributing across multiple organizations with hands-on experience in building modern interfaces using React, Next.js, TypeScript, TailwindCSS, and Shadcn UI. Experienced in UI slicing, feature integration, dashboard development, web animations, and collaborative workflows. Passionate about scalable web architecture, performance-driven development, and crafting user-centric web experiences.",
 };
@@ -13,7 +13,8 @@ export const profile = {
 export const education = [
   {
     school: "Institut Teknologi Sepuluh Nopember (ITS)",
-    program: "Information System, Faculty of Electrical Engineering and Intelligent Informatics",
+    program:
+      "Information System, Faculty of Electrical Engineering and Intelligent Informatics",
     period: "Jul 2024 — Present",
     notes: ["GPA 3.94/4.00"],
   },
@@ -50,7 +51,15 @@ export const experience = [
       "Deployed and managed the application on a Virtual Private Server (VPS), handling server configuration to ensure 99% uptime and stable access for users.",
       "Streamlined the deployment pipeline by integrating GitHub with Vercel, establishing an automated CI/CD workflow that ensured rapid iterations and stable production releases.",
     ],
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI", "Framer Motion", "VPS", "CI/CD"],
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn UI",
+      "Framer Motion",
+      "VPS",
+      "CI/CD",
+    ],
   },
   {
     role: "Frontend Developer",
@@ -62,7 +71,13 @@ export const experience = [
       "Optimized web responsiveness to ensure seamless usability across various screen sizes, increasing accessibility for student members and external visitors.",
       "Engineered and integrated a dynamic Leaderboard Dashboard, connecting frontend interfaces with backend APIs to display real-time 30+ member rankings.",
     ],
-    tags: ["Next.js", "Shadcn UI", "TypeScript", "Tailwind CSS", "API Integration"],
+    tags: [
+      "Next.js",
+      "Shadcn UI",
+      "TypeScript",
+      "Tailwind CSS",
+      "API Integration",
+    ],
   },
   {
     role: "Frontend Developer",
@@ -184,15 +199,50 @@ export const projects = [
 ];
 
 export const skills = {
-  hard: ["Frontend Development", "Authentication & Authorization", "State Management", "Responsive Web Design"],
-  soft: ["Problem Solving", "Analytical Thinking", "Team Collaboration", "Project Coordination"],
-  tools: ["Figma", "Visual Studio Code", "Postman", "Hoppscotch", "GitHub", "Bruno", "Docker"],
+  hard: [
+    "Frontend Development",
+    "Authentication & Authorization",
+    "State Management",
+    "Responsive Web Design",
+  ],
+  soft: [
+    "Problem Solving",
+    "Analytical Thinking",
+    "Team Collaboration",
+    "Project Coordination",
+  ],
+  tools: [
+    "Figma",
+    "Visual Studio Code",
+    "Postman",
+    "Hoppscotch",
+    "GitHub",
+    "Bruno",
+    "Docker",
+  ],
   languages: ["Bahasa Indonesia", "English"],
-  stack: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI", "Bun", "Framer Motion"],
+  stack: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "Shadcn UI",
+    "Bun",
+    "Framer Motion",
+  ],
 };
 
 export const awards = [
-  { title: "Awardee — Bakti BCA Scholarship 2026", org: "PT Bank Central Asia Tbk (BCA)" },
-  { title: "1st Place — SWAg Business Case Competition 2025", org: "Universitas Gadjah Mada" },
-  { title: "Grantees - Health Professional Education Quality (HETI ADB)", org: "Institut Teknologi Sepuluh Nopember" },
+  {
+    title: "Awardee — Bakti BCA Scholarship 2026",
+    org: "PT Bank Central Asia Tbk (BCA)",
+  },
+  {
+    title: "1st Place — SWAg Business Case Competition 2025",
+    org: "Universitas Gadjah Mada",
+  },
+  {
+    title: "Grantees - Health Professional Education Quality (HETI ADB)",
+    org: "Institut Teknologi Sepuluh Nopember",
+  },
 ];
