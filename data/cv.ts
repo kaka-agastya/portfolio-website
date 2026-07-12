@@ -146,7 +146,7 @@ export const projects = [
   {
     name: "Rextra",
     role: "Frontend Developer",
-    period: "Nov 2025 — Present",
+    period: "Nov 2025 — Mar 2026",
     points: [
       "Led a robust CI/CD pipeline using GitHub Actions and Docker, automating the build and deployment process to ensure consistent production environments and reduce manual release errors.",
       "Architected the initial frontend repository, establishing coding standards and folder structures that serve as the scalable foundation for the entire web dashboard project.",
