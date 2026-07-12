@@ -14,7 +14,14 @@ export default function Projects() {
                 <p className="text-ink-soft text-sm mt-1">{p.role} · {p.period}</p>
               </div>
               {p.link && (
-                <a href={p.link} target="_blank" className="text-ink-mute hover:text-ink">
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ink-mute hover:text-ink"
+                  aria-label={`View ${p.name} project`}
+                  title={`View ${p.name} project`}
+                >
                   <ExternalLink size={18} />
                 </a>
               )}

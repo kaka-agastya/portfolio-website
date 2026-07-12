@@ -15,7 +15,7 @@ export default function Contact() {
       </div>
 
       <h3 className="font-display text-3xl lg:text-5xl font-medium max-w-2xl text-balance leading-tight">
-        Let's build something reliable together.
+        Let&apos;s build something reliable together.
       </h3>
 
       <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4 font-mono text-sm">
@@ -36,6 +36,7 @@ export default function Contact() {
         <a
           href={profile.linkedin}
           target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center gap-2 hover:text-ink-mute"
         >
           <img
@@ -49,6 +50,7 @@ export default function Contact() {
         <a
           href={profile.github}
           target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center gap-2 hover:text-ink-mute"
         >
           <img

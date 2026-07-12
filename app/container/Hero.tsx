@@ -25,7 +25,7 @@ export default function Hero() {
       <div className="fade-up border border-line rounded-b-md rounded-tr-md p-8 lg:p-14 bg-white">
         <p className="font-mono text-xs text-ink-mute mb-6">
           <span className="text-ink">const</span> role <span className="text-ink">=</span>{" "}
-          <span className="text-ink-soft">"{typed}"</span>
+          <span className="text-ink-soft">&quot;{typed}&quot;</span>
           <span className="caret">▍</span>
         </p>
 
