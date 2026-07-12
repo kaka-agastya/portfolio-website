@@ -1,3 +1,4 @@
+import GithubActivity from "@/components/GithubActivity";
 import Section from "../../components/Section";
 import { skills } from "@/data/cv";
 
@@ -15,16 +16,24 @@ export default function Skills() {
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {groups.map((g) => (
           <div key={g.label}>
-            <p className="font-mono text-[11px] uppercase tracking-wide text-ink-mute mb-3">{g.label}</p>
+            <p className="font-mono text-[11px] uppercase tracking-wide text-ink-mute mb-3">
+              {g.label}
+            </p>
             <div className="flex flex-wrap gap-2">
               {g.items.map((item) => (
-                <span key={item} className="text-sm border border-line rounded px-3 py-1.5 text-ink-soft">
+                <span
+                  key={item}
+                  className="text-sm border border-line rounded px-3 py-1.5 text-ink-soft"
+                >
                   {item}
                 </span>
               ))}
             </div>
           </div>
         ))}
+      </div>
+      <div className="mt-14">
+        <GithubActivity username="kaka-agastya" />
       </div>
     </Section>
   );
