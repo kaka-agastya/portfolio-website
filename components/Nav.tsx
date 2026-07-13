@@ -52,7 +52,8 @@ export default function Nav() {
 
   return (
     <nav
-      className={`hidden xl:flex flex-col gap-3 fixed left-10 top-1/2 -translate-y-1/2 z-40 transition-opacity duration-500 ${
+      aria-label="Section navigation"
+      className={`hidden xl:flex flex-col gap-3 fixed left-10 top-1/2 -translate-y-1/2 z-40 transition-opacity duration-500 focus-within:opacity-100 focus-within:pointer-events-auto ${
         visible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
@@ -62,6 +63,7 @@ export default function Nav() {
           href={`#${s.id}`}
           className="group flex items-center gap-3"
           aria-label={s.label}
+          aria-current={active === s.id ? "true" : undefined}
         >
           <span
             className={`h-px transition-all duration-300 ${

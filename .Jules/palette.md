@@ -1,3 +1,3 @@
-## 2025-02-12 - Accessible External Links
-**Learning:** Icon-only links using Lucide React icons (like `<ExternalLink />`) were missing ARIA labels, creating empty link announcements for screen readers. Unescaped quotes in JSX text content can cause lint/build failures in Next.js apps.
-**Action:** Always verify icon-only interactive elements have `aria-label` and `title`. Ensure all JSX text is properly escaped (`&quot;`, `&apos;`). Avoid checking in package manager lock files or scratch scripts created during analysis.
+## 2025-02-18 - Keyboard Accessibility for Auto-hiding Navigation
+**Learning:** Hidden elements (opacity: 0) remain in the tab order, causing keyboard users to focus on invisible links. This violates WCAG 2.4.7 (Focus Visible).
+**Action:** Use `focus-within:opacity-100 focus-within:pointer-events-auto` on auto-hiding containers to ensure they reveal themselves when receiving keyboard focus. Also, remember to add `aria-label` to landmark elements like `<nav>` and `aria-current="true"` to explicitly announce active states to screen readers.
