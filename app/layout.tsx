@@ -6,6 +6,9 @@ import { Analytics } from "@vercel/analytics/next"
 export const metadata: Metadata = {
   title: "Kaka Agastya Herlambang Wahyudi — Frontend Web Developer",
   description: "Portfolio & CV of Kaka Agastya Herlambang Wahyudi, Frontend Web Developer.",
+  verification: {
+    google: "ram1yQ9oKP6ZzuZpfoFvHvBnyD7WTzldP0KxTYc6TcI", 
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
