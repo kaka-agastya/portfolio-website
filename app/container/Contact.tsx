@@ -43,7 +43,8 @@ export default function Contact() {
             width="24"
             height="24"
             src="https://img.icons8.com/ios/50/linkedin.png"
-            alt="linkedin"
+            alt=""
+            aria-hidden="true"
           />{" "}
           LinkedIn
         </a>
@@ -57,7 +58,8 @@ export default function Contact() {
             width="24"
             height="24"
             src="https://img.icons8.com/ios-glyphs/30/github.png"
-            alt="github"
+            alt=""
+            aria-hidden="true"
           />{" "}
           GitHub
         </a>
