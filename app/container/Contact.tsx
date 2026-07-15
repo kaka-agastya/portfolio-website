@@ -21,7 +21,7 @@ export default function Contact() {
       <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4 font-mono text-sm">
         <a
           href={`mailto:${profile.email}`}
-          className="flex items-center gap-2 hover:text-ink-mute"
+          className="flex items-center gap-2 hover:text-ink-mute transition-colors"
         >
           <Mail size={16} /> {profile.email}
         </a>
@@ -29,15 +29,16 @@ export default function Contact() {
           href={`https://wa.me/${profile.phone.replace(/\s/g, "")}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 hover:text-ink-mute"
+          className="flex items-center gap-2 hover:text-ink-mute transition-colors"
         >
           <Phone size={16} /> {profile.phone}
+          <span className="sr-only">(opens in a new tab)</span>
         </a>
         <a
           href={profile.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 hover:text-ink-mute"
+          className="flex items-center gap-2 hover:text-ink-mute transition-colors"
         >
           <img
             width="24"
@@ -47,12 +48,13 @@ export default function Contact() {
             aria-hidden="true"
           />{" "}
           LinkedIn
+          <span className="sr-only">(opens in a new tab)</span>
         </a>
         <a
           href={profile.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 hover:text-ink-mute"
+          className="flex items-center gap-2 hover:text-ink-mute transition-colors"
         >
           <img
             width="24"
@@ -62,6 +64,7 @@ export default function Contact() {
             aria-hidden="true"
           />{" "}
           GitHub
+          <span className="sr-only">(opens in a new tab)</span>
         </a>
       </div>
 

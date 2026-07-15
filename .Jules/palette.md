@@ -5,3 +5,7 @@
 ## 2026-07-14 - Redundant Alt Text on Icon Links
 **Learning:** Decorative icons that are accompanied by visible text descriptions (e.g. "LinkedIn" text next to a LinkedIn logo icon) should not have descriptive alt text. Providing alt text like `alt="linkedin"` causes screen readers to redundantly announce the same link twice ("linkedin image, LinkedIn link").
 **Action:** Always set `alt=""` and add `aria-hidden="true"` to images or icons when the exact same content is provided by adjacent visible text within the same link or button element.
+
+## 2025-02-23 - Accessible External Links
+**Learning:** When adding `target="_blank"` to external links, it's crucial to inform screen readers about this behavior to avoid unexpectedly taking visually impaired users out of context. The `aria-label` attribute and visually hidden elements (`<span className="sr-only">`) are highly effective tools for adding this context natively without cluttering the visible UI.
+**Action:** Always append `(opens in a new tab)` context to the `aria-label` or via a screen-reader only visually hidden `span` for all newly added or encountered external `target="_blank"` links in future UX updates.

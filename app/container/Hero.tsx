@@ -40,9 +40,9 @@ export default function Hero() {
         <div className="mt-10 flex flex-wrap items-center gap-6">
           <a
             href="#experience"
-            className="inline-flex items-center gap-2 font-mono text-sm border border-ink px-5 py-3 rounded-md hover:bg-ink hover:text-white transition-colors"
+            className="group inline-flex items-center gap-2 font-mono text-sm border border-ink px-5 py-3 rounded-md hover:bg-ink hover:text-white transition-colors"
           >
-            View experience <ArrowDownRight size={16} />
+            View experience <ArrowDownRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
           </a>
           <span className="font-mono text-xs text-ink-mute">{profile.location}</span>
         </div>

@@ -18,8 +18,8 @@ export default function Projects() {
                   href={p.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ink-mute hover:text-ink"
-                  aria-label={`View ${p.name} project`}
+                  className="text-ink-mute hover:text-ink transition-all hover:scale-110"
+                  aria-label={`View ${p.name} project (opens in a new tab)`}
                   title={`View ${p.name} project`}
                 >
                   <ExternalLink size={18} />
