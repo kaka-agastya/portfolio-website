@@ -14,6 +14,7 @@ export default function Nav() {
   const [active, setActive] = useState("intro");
   const [visible, setVisible] = useState(true);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastMoveTimeRef = useRef<number>(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,11 +34,17 @@ export default function Nav() {
 
   useEffect(() => {
     const showNav = () => {
+      const now = Date.now();
+      // Throttle event processing to every 100ms to reduce timer thrashing
+      if (now - lastMoveTimeRef.current < 100) return;
+      lastMoveTimeRef.current = now;
+
       setVisible(true);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => setVisible(false), 1500);
     };
 
+    // Initial show
     showNav();
 
     window.addEventListener("scroll", showNav, { passive: true });
