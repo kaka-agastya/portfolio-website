@@ -2,6 +2,7 @@
 
 import { profile } from "@/data/cv";
 import { Mail, Phone, Copy, Check } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 function CopyButton({ text, label }: { text: string; label: string }) {
@@ -74,12 +75,13 @@ export default function Contact() {
           rel="noopener noreferrer"
           className="flex items-center gap-2 hover:text-ink-mute transition-colors"
         >
-          <img
+          <Image
             width="24"
             height="24"
             src="https://img.icons8.com/ios/50/linkedin.png"
             alt=""
             aria-hidden="true"
+            loading="lazy"
           />{" "}
           LinkedIn
           <span className="sr-only">(opens in a new tab)</span>
@@ -90,12 +92,13 @@ export default function Contact() {
           rel="noopener noreferrer"
           className="flex items-center gap-2 hover:text-ink-mute transition-colors"
         >
-          <img
+          <Image
             width="24"
             height="24"
             src="https://img.icons8.com/ios-glyphs/30/github.png"
             alt=""
             aria-hidden="true"
+            loading="lazy"
           />{" "}
           GitHub
           <span className="sr-only">(opens in a new tab)</span>
