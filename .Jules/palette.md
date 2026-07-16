@@ -9,3 +9,7 @@
 ## 2025-02-23 - Accessible External Links
 **Learning:** When adding `target="_blank"` to external links, it's crucial to inform screen readers about this behavior to avoid unexpectedly taking visually impaired users out of context. The `aria-label` attribute and visually hidden elements (`<span className="sr-only">`) are highly effective tools for adding this context natively without cluttering the visible UI.
 **Action:** Always append `(opens in a new tab)` context to the `aria-label` or via a screen-reader only visually hidden `span` for all newly added or encountered external `target="_blank"` links in future UX updates.
+
+## 2025-02-23 - Respecting User Preference with Copy Micro-Interactions
+**Learning:** Forcing actions like opening unconfigured mail applications (via `mailto:`) can frustrate users and break their workflow. Users often prefer copying the contact details to use in their preferred platform.
+**Action:** Provide "Copy to clipboard" buttons alongside contact links using the `opacity-0 group-hover:opacity-100 focus-visible:opacity-100` pattern. This keeps the UI uncluttered on desktop, accessible via keyboard, and explicitly clear for touch users.

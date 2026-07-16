@@ -1,5 +1,33 @@
+"use client";
+
 import { profile } from "@/data/cv";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Copy, Check } from "lucide-react";
+import { useState } from "react";
+
+function CopyButton({ text, label }: { text: string; label: string }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy", err);
+    }
+  };
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="ml-2 p-1.5 text-ink-mute hover:text-ink transition-colors lg:opacity-0 lg:group-hover:opacity-100 focus-visible:opacity-100 focus-within:opacity-100 rounded-md"
+      aria-label={label}
+      title={label}
+    >
+      {copied ? <Check size={14} /> : <Copy size={14} />}
+    </button>
+  );
+}
 
 export default function Contact() {
   return (
@@ -19,21 +47,27 @@ export default function Contact() {
       </h3>
 
       <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4 font-mono text-sm">
-        <a
-          href={`mailto:${profile.email}`}
-          className="flex items-center gap-2 hover:text-ink-mute transition-colors"
-        >
-          <Mail size={16} /> {profile.email}
-        </a>
-        <a
-          href={`https://wa.me/${profile.phone.replace(/\s/g, "")}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 hover:text-ink-mute transition-colors"
-        >
-          <Phone size={16} /> {profile.phone}
-          <span className="sr-only">(opens in a new tab)</span>
-        </a>
+        <div className="group flex items-center">
+          <a
+            href={`mailto:${profile.email}`}
+            className="flex items-center gap-2 hover:text-ink-mute transition-colors"
+          >
+            <Mail size={16} /> {profile.email}
+          </a>
+          <CopyButton text={profile.email} label="Copy email address" />
+        </div>
+        <div className="group flex items-center">
+          <a
+            href={`https://wa.me/${profile.phone.replace(/\s/g, "")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-ink-mute transition-colors"
+          >
+            <Phone size={16} /> {profile.phone}
+            <span className="sr-only">(opens in a new tab)</span>
+          </a>
+          <CopyButton text={profile.phone} label="Copy phone number" />
+        </div>
         <a
           href={profile.linkedin}
           target="_blank"
