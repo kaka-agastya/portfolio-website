@@ -17,15 +17,20 @@ function useTypewriter(text: string, speed = 40) {
   return display;
 }
 
+// ⚡ Bolt: Isolated high-frequency state updates to prevent re-rendering the entire Hero section every 40ms.
+function TypewriterText({ text }: { text: string }) {
+  const typed = useTypewriter(text);
+  return <span className="text-ink-soft">&quot;{typed}&quot;</span>;
+}
+
 export default function Hero() {
-  const typed = useTypewriter(profile.role);
   return (
     <section id="intro" className="min-h-screen flex flex-col justify-center px-6 lg:px-32 xl:px-40 max-w-content mx-auto">
 
       <div className="fade-up border border-line rounded-b-md rounded-tr-md p-8 lg:p-14 bg-white">
         <p className="font-mono text-xs text-ink-mute mb-6">
           <span className="text-ink">const</span> role <span className="text-ink">=</span>{" "}
-          <span className="text-ink-soft">&quot;{typed}&quot;</span>
+          <TypewriterText text={profile.role} />
           <span className="caret">▍</span>
         </p>
 

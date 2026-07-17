@@ -29,10 +29,13 @@ export default function GithubActivity({ username }: { username: string }) {
       </div>
 
       <div className="overflow-x-auto">
+        {/* ⚡ Bolt: Deferred loading of off-screen chart image to improve initial LCP & bandwidth */}
         <img
           src={`https://ghchart.rshah.org/0A0A0A/${username}`}
           alt={`${username}'s GitHub contribution chart`}
           className="min-w-[600px]"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     </div>
