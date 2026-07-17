@@ -23,11 +23,12 @@ export default function Hero() {
     <section id="intro" className="min-h-screen flex flex-col justify-center px-6 lg:px-32 xl:px-40 max-w-content mx-auto">
 
       <div className="fade-up border border-line rounded-b-md rounded-tr-md p-8 lg:p-14 bg-white">
-        <p className="font-mono text-xs text-ink-mute mb-6">
+        <p aria-hidden="true" className="font-mono text-xs text-ink-mute mb-6">
           <span className="text-ink">const</span> role <span className="text-ink">=</span>{" "}
           <span className="text-ink-soft">&quot;{typed}&quot;</span>
           <span className="caret">▍</span>
         </p>
+        <p className="sr-only">const role = &quot;{profile.role}&quot;</p>
 
         <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tight text-balance leading-[1.05]">
           {profile.name}

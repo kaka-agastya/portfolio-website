@@ -13,3 +13,7 @@
 ## 2025-02-23 - Respecting User Preference with Copy Micro-Interactions
 **Learning:** Forcing actions like opening unconfigured mail applications (via `mailto:`) can frustrate users and break their workflow. Users often prefer copying the contact details to use in their preferred platform.
 **Action:** Provide "Copy to clipboard" buttons alongside contact links using the `opacity-0 group-hover:opacity-100 focus-visible:opacity-100` pattern. This keeps the UI uncluttered on desktop, accessible via keyboard, and explicitly clear for touch users.
+
+## 2026-07-17 - Accessible Typewriter Effects
+**Learning:** Typewriter animations that update the DOM character by character cause screen readers to announce fragmented, repetitive text, creating a confusing experience.
+**Action:** Always add `aria-hidden="true"` to visually animated text elements and provide a visually hidden (`sr-only`) element containing the full, completed string adjacent to it so screen readers can announce the context smoothly.
