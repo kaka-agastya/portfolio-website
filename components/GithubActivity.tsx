@@ -1,15 +1,44 @@
-"use client";
-import { useEffect, useState } from "react";
+// ⚡ Bolt: Fetch GitHub stats directly on the server to avoid client-side waterfalls and reduce JS bundle size.
+async function getGithubContributions() {
+  const query = `
+    query($login: String!) {
+      user(login: $login) {
+        contributionsCollection {
+          contributionCalendar {
+            totalContributions
+          }
+        }
+      }
+    }
+  `;
 
-export default function GithubActivity({ username }: { username: string }) {
-  const [total, setTotal] = useState<number | null>(null);
+  try {
+    const res = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+        variables: { login: process.env.GITHUB_USERNAME },
+      }),
+      next: { revalidate: 21600 },
+    });
 
-  useEffect(() => {
-    fetch("/api/github-stats")
-      .then((res) => res.json())
-      .then((data) => setTotal(data.total))
-      .catch(() => setTotal(null));
-  }, []);
+    if (!res.ok) {
+      return null;
+    }
+
+    const data = await res.json();
+    return data?.data?.user?.contributionsCollection?.contributionCalendar?.totalContributions ?? null;
+  } catch {
+    return null;
+  }
+}
+
+export default async function GithubActivity({ username }: { username: string }) {
+  const total = await getGithubContributions();
 
   return (
     <div className="border border-line rounded-md p-6 lg:p-8">
