@@ -17,3 +17,7 @@
 ## 2026-07-17 - Accessible Typewriter Effects
 **Learning:** Typewriter animations that update the DOM character by character cause screen readers to announce fragmented, repetitive text, creating a confusing experience.
 **Action:** Always add `aria-hidden="true"` to visually animated text elements and provide a visually hidden (`sr-only`) element containing the full, completed string adjacent to it so screen readers can announce the context smoothly.
+
+## 2024-10-27 - Accessible Copy Interactions
+**Learning:** Visual-only feedback (like changing an icon to a checkmark) and updating native attributes (like `title` or `aria-label`) upon user action are often not read out immediately by screen readers, leaving those users wondering if the action succeeded.
+**Action:** Always include an `aria-live` region (e.g., `<span aria-live="polite" className="sr-only">Copied</span>`) for temporary success states in micro-interactions, especially for copy-to-clipboard functionality, to ensure all users receive confirmation.
