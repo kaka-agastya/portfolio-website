@@ -17,3 +17,7 @@
 ## 2026-07-17 - Accessible Typewriter Effects
 **Learning:** Typewriter animations that update the DOM character by character cause screen readers to announce fragmented, repetitive text, creating a confusing experience.
 **Action:** Always add `aria-hidden="true"` to visually animated text elements and provide a visually hidden (`sr-only`) element containing the full, completed string adjacent to it so screen readers can announce the context smoothly.
+
+## 2025-02-23 - Keyboard Accessibility for Scrollable Regions
+**Learning:** Elements styled with CSS `overflow: auto` or `overflow: scroll` that do not contain any naturally focusable elements inside them (like links or buttons) cannot be scrolled by keyboard-only users.
+**Action:** Always add `tabIndex={0}`, `role="region"`, and an appropriate `aria-label` to overflow scroll containers so they receive focus and announce their purpose to screen readers.

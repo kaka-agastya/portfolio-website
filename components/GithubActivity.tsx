@@ -57,7 +57,12 @@ export default async function GithubActivity({ username }: { username: string })
         </p>
       </div>
 
-      <div className="overflow-x-auto">
+      <div
+        className="overflow-x-auto"
+        tabIndex={0}
+        role="region"
+        aria-label="GitHub contribution chart"
+      >
         {/* ⚡ Bolt: Deferred loading of off-screen chart image to improve initial LCP & bandwidth */}
         <img
           src={`https://ghchart.rshah.org/0A0A0A/${username}`}
