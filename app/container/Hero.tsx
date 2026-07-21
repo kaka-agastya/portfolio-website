@@ -1,27 +1,6 @@
-'use client'
 import { profile } from "@/data/cv";
 import { ArrowDownRight } from "lucide-react";
-import { useEffect, useState } from "react";
-
-function useTypewriter(text: string, speed = 40) {
-  const [display, setDisplay] = useState("");
-  useEffect(() => {
-    let i = 0;
-    const id = setInterval(() => {
-      setDisplay(text.slice(0, i + 1));
-      i++;
-      if (i === text.length) clearInterval(id);
-    }, speed);
-    return () => clearInterval(id);
-  }, [text, speed]);
-  return display;
-}
-
-// ⚡ Bolt: Isolated high-frequency state updates to prevent re-rendering the entire Hero section every 40ms.
-function TypewriterText({ text }: { text: string }) {
-  const typed = useTypewriter(text);
-  return <span className="text-ink-soft">&quot;{typed}&quot;</span>;
-}
+import { TypewriterText } from "@/components/TypewriterText";
 
 export default function Hero() {
   return (
