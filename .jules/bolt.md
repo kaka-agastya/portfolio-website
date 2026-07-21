@@ -5,3 +5,7 @@
 ## 2024-05-24 - Eliminating Client-Side Data Fetching Waterfalls with React Server Components (RSC)
 **Learning:** Using `useEffect` to fetch data from an internal Next.js API route introduces a client-side waterfall, delays rendering until JS loads/executes, and needlessly increases the JS bundle size.
 **Action:** Always fetch data directly in a React Server Component (RSC) when the data fetching does not depend on client-side state, thereby moving the processing to the server, improving LCP, and eliminating the internal API route layer.
+
+## 2024-07-21 - Pushing Client Boundaries to the Leaves
+**Learning:** Adding `"use client"` to large layout or section components (like `Hero.tsx` or `Contact.tsx`) forces all their children and the components themselves to be shipped as client-side JavaScript, increasing the JS bundle size unnecessarily when most of the content is static.
+**Action:** Extract small interactive pieces (like `useTypewriter` logic or `CopyButton`) into their own tiny Client Components. Keep the larger parent layouts as Server Components. This minimizes the client boundary and significantly reduces the client-side JavaScript bundle size.
