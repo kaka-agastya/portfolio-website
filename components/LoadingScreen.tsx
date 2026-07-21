@@ -10,13 +10,11 @@ export default function LoadingScreen() {
       setIsLoading(false);
     };
 
-    // Check on mount; if complete, use a minimal timeout to avoid sync setState in effect
     if (document.readyState === "complete") {
       const timeout = setTimeout(() => setIsLoading(false), 0);
       return () => clearTimeout(timeout);
     } else {
       window.addEventListener("load", handleLoad);
-      // Fallback just in case it takes too long
       const timeout = setTimeout(() => setIsLoading(false), 2500);
       return () => {
         window.removeEventListener("load", handleLoad);
@@ -51,7 +49,7 @@ export default function LoadingScreen() {
             transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
             className="w-10 h-10 border-4 border-line border-t-ink rounded-full mb-4"
           />
-          <p className="font-mono text-sm text-ink-soft animate-pulse">Loading experience...</p>
+          <p className="font-mono text-sm text-ink-soft animate-pulse">Loading...</p>
         </motion.div>
       )}
     </AnimatePresence>
