@@ -21,11 +21,21 @@ function CopyButton({ text, label }: { text: string; label: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="ml-2 p-1.5 text-ink-mute hover:text-ink transition-colors lg:opacity-0 lg:group-hover:opacity-100 focus-visible:opacity-100 focus-within:opacity-100 rounded-md"
+      className="group/btn relative ml-2 p-1.5 text-ink-mute hover:text-ink transition-colors lg:opacity-0 lg:group-hover:opacity-100 focus-visible:opacity-100 focus-within:opacity-100 rounded-md"
       aria-label={label}
-      title={label}
     >
       {copied ? <Check size={14} /> : <Copy size={14} />}
+
+      <span
+        aria-hidden="true"
+        className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-ink text-white font-mono text-[10px] rounded opacity-0 group-hover/btn:opacity-100 group-focus-visible/btn:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10"
+      >
+        {copied ? "Copied!" : "Copy"}
+      </span>
+
+      <span aria-live="polite" className="sr-only">
+        {copied ? "Copied to clipboard" : ""}
+      </span>
     </button>
   );
 }

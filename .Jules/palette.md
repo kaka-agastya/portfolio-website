@@ -21,3 +21,7 @@
 ## 2025-02-23 - Keyboard Accessibility for Scrollable Regions
 **Learning:** Elements styled with CSS `overflow: auto` or `overflow: scroll` that do not contain any naturally focusable elements inside them (like links or buttons) cannot be scrolled by keyboard-only users.
 **Action:** Always add `tabIndex={0}`, `role="region"`, and an appropriate `aria-label` to overflow scroll containers so they receive focus and announce their purpose to screen readers.
+
+## 2026-07-21 - Native Tooltips vs Custom Tooltips for Icon Buttons
+**Learning:** Icon-only interactive buttons require both visual and non-visual feedback for success states. Relying on the native browser `title` attribute provides a suboptimal visual experience (it's slow to appear and unstyled), and does not guarantee screen reader feedback upon action completion.
+**Action:** Replace native `title` tooltips with custom CSS-based tooltips that appear instantly on hover/focus. Additionally, ensure actions like 'Copy to clipboard' utilize an `aria-live="polite"` region to explicitly announce success to screen readers.
