@@ -9,3 +9,7 @@
 ## 2024-07-21 - Pushing Client Boundaries to the Leaves
 **Learning:** Adding `"use client"` to large layout or section components (like `Hero.tsx` or `Contact.tsx`) forces all their children and the components themselves to be shipped as client-side JavaScript, increasing the JS bundle size unnecessarily when most of the content is static.
 **Action:** Extract small interactive pieces (like `useTypewriter` logic or `CopyButton`) into their own tiny Client Components. Keep the larger parent layouts as Server Components. This minimizes the client boundary and significantly reduces the client-side JavaScript bundle size.
+
+## 2023-10-27 - Inline SVGs over External Images for Basic Icons
+**Learning:** Using `next/image` to fetch small, basic icons (like GitHub/LinkedIn logos) from external providers (e.g., `img.icons8.com`) introduces unnecessary network latency (DNS lookup, TCP handshake, TLS negotiation for a new origin) and potential layout shift if the image loads slowly. The `next/image` component also has overhead that is disproportionate for simple monochromatic shapes.
+**Action:** Always use inline SVGs (or an icon library like `lucide-react` which generates inline SVGs) for basic UI icons. Only use `next/image` and external image providers for actual content images (photos, complex illustrations) where optimization, resizing, and lazy loading provide real value.
