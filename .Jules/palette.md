@@ -21,3 +21,7 @@
 ## 2025-02-23 - Keyboard Accessibility for Scrollable Regions
 **Learning:** Elements styled with CSS `overflow: auto` or `overflow: scroll` that do not contain any naturally focusable elements inside them (like links or buttons) cannot be scrolled by keyboard-only users.
 **Action:** Always add `tabIndex={0}`, `role="region"`, and an appropriate `aria-label` to overflow scroll containers so they receive focus and announce their purpose to screen readers.
+
+## 2024-07-22 - Multi-modal Interactive Feedback & Motion Safety
+**Learning:** Copy-to-clipboard actions often lack sufficient feedback, especially for screen reader users and those relying on tactile/visual cues. Relying only on an icon change is insufficient. Also, global `scroll-smooth` can cause discomfort for users with vestibular motion disorders.
+**Action:** When creating interactive elements like copy buttons, always provide multi-modal feedback: visual tactile (e.g. `active:scale-95`), dynamic a11y labels (`aria-label`, `title`), and explicit screen reader announcements (`aria-live="polite"`). Also, always prefer `motion-safe:scroll-smooth` over just `scroll-smooth` to respect OS-level `prefers-reduced-motion` settings.
