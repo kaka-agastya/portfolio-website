@@ -50,8 +50,8 @@ export default function Contact() {
           {/* ⚡ Bolt: Replaced external Image with inline SVG to eliminate network requests and layout shift */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -76,8 +76,8 @@ export default function Contact() {
           {/* ⚡ Bolt: Replaced external Image with inline SVG to eliminate network requests and layout shift */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
