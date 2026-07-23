@@ -13,3 +13,7 @@
 ## 2023-10-27 - Inline SVGs over External Images for Basic Icons
 **Learning:** Using `next/image` to fetch small, basic icons (like GitHub/LinkedIn logos) from external providers (e.g., `img.icons8.com`) introduces unnecessary network latency (DNS lookup, TCP handshake, TLS negotiation for a new origin) and potential layout shift if the image loads slowly. The `next/image` component also has overhead that is disproportionate for simple monochromatic shapes.
 **Action:** Always use inline SVGs (or an icon library like `lucide-react` which generates inline SVGs) for basic UI icons. Only use `next/image` and external image providers for actual content images (photos, complex illustrations) where optimization, resizing, and lazy loading provide real value.
+
+## 2024-07-23 - Offloading High-Frequency Updates from React Reconciliation
+**Learning:** Even when isolated into small client components, using `useState` for high-frequency visual updates (e.g., a typewriter effect running every 40ms) causes continuous React reconciliation and main thread blocking during the critical initial hydration phase.
+**Action:** For continuous, high-frequency, purely visual updates (like fast intervals or requestAnimationFrame loops), bypass React's state management entirely. Use `useRef` to directly manipulate DOM nodes (e.g., `spanRef.current.textContent`). This reduces JS execution time, prevents jank, and unblocks the main thread for more critical initial rendering tasks.
