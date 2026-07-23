@@ -25,3 +25,7 @@
 ## 2024-07-22 - Multi-modal Interactive Feedback & Motion Safety
 **Learning:** Copy-to-clipboard actions often lack sufficient feedback, especially for screen reader users and those relying on tactile/visual cues. Relying only on an icon change is insufficient. Also, global `scroll-smooth` can cause discomfort for users with vestibular motion disorders.
 **Action:** When creating interactive elements like copy buttons, always provide multi-modal feedback: visual tactile (e.g. `active:scale-95`), dynamic a11y labels (`aria-label`, `title`), and explicit screen reader announcements (`aria-live="polite"`). Also, always prefer `motion-safe:scroll-smooth` over just `scroll-smooth` to respect OS-level `prefers-reduced-motion` settings.
+
+## 2025-02-23 - Color Contrast for Muted Text
+**Learning:** Using overly light grays (like `#9A9A9A` on `#FFFFFF`, contrast 2.8:1) for secondary text (dates, locations, footers) causes accessibility failures and makes content hard to read for users with low vision.
+**Action:** Always ensure that even "muted" or "soft" text colors meet the WCAG AA minimum contrast ratio of 4.5:1 against their background. For white backgrounds, grays should generally be `#737373` or darker.
