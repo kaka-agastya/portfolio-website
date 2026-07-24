@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import GithubActivity from "@/components/GithubActivity";
 import Section from "../../components/Section";
 import { skills } from "@/data/cv";
@@ -33,7 +34,9 @@ export default function Skills() {
         ))}
       </div>
       <div className="mt-14">
-        <GithubActivity username="kaka-agastya" />
+        <Suspense fallback={<div className="border border-line rounded-md p-6 lg:p-8 animate-pulse bg-line/20 min-h-[220px]" />}>
+          <GithubActivity username="kaka-agastya" />
+        </Suspense>
       </div>
     </Section>
   );
