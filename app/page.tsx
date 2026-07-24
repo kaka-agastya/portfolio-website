@@ -8,14 +8,22 @@ import Skills from "./container/Skills";
 
 export default function Home() {
   return (
-    <main>
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[9999] focus:p-4 focus:bg-white focus:text-ink focus:border-2 focus:border-ink focus:rounded-md focus:shadow-md focus:top-4 focus:left-4 font-mono text-sm"
+      >
+        Skip to main content
+      </a>
       <Nav />
-      <Hero />
-      <Experience />
-      <Projects />
-      <Education />
-      <Skills />
-      <Contact />
-    </main>
+      <main id="main-content" tabIndex={-1} className="focus:outline-none">
+        <Hero />
+        <Experience />
+        <Projects />
+        <Education />
+        <Skills />
+        <Contact />
+      </main>
+    </>
   );
 }

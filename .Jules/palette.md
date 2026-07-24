@@ -25,3 +25,7 @@
 ## 2024-07-22 - Multi-modal Interactive Feedback & Motion Safety
 **Learning:** Copy-to-clipboard actions often lack sufficient feedback, especially for screen reader users and those relying on tactile/visual cues. Relying only on an icon change is insufficient. Also, global `scroll-smooth` can cause discomfort for users with vestibular motion disorders.
 **Action:** When creating interactive elements like copy buttons, always provide multi-modal feedback: visual tactile (e.g. `active:scale-95`), dynamic a11y labels (`aria-label`, `title`), and explicit screen reader announcements (`aria-live="polite"`). Also, always prefer `motion-safe:scroll-smooth` over just `scroll-smooth` to respect OS-level `prefers-reduced-motion` settings.
+
+## 2025-02-23 - Bypass Blocks for Keyboard Users
+**Learning:** Keyboard-only users often have to tab through repetitive navigation links on every page before reaching the main content. This can be frustrating and is a violation of WCAG 2.4.1 (Bypass Blocks).
+**Action:** Always include a "Skip to main content" link as the first focusable element on the page. It should be visually hidden (`sr-only`) until it receives keyboard focus, at which point it should become visible (`focus:not-sr-only focus:absolute` with appropriate styling) so sighted keyboard users know what they are focused on. The target element (usually `<main>`) should have an `id` and `tabIndex={-1}` to ensure focus is properly set programmatically across browsers without adding it to the normal tab sequence.
