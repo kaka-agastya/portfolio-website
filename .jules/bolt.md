@@ -13,3 +13,7 @@
 ## 2023-10-27 - Inline SVGs over External Images for Basic Icons
 **Learning:** Using `next/image` to fetch small, basic icons (like GitHub/LinkedIn logos) from external providers (e.g., `img.icons8.com`) introduces unnecessary network latency (DNS lookup, TCP handshake, TLS negotiation for a new origin) and potential layout shift if the image loads slowly. The `next/image` component also has overhead that is disproportionate for simple monochromatic shapes.
 **Action:** Always use inline SVGs (or an icon library like `lucide-react` which generates inline SVGs) for basic UI icons. Only use `next/image` and external image providers for actual content images (photos, complex illustrations) where optimization, resizing, and lazy loading provide real value.
+
+## 2024-08-15 - Replacing JS Animation Libraries with Native CSS
+**Learning:** Using heavy JS animation libraries like `framer-motion` for simple animations (like fade-ins, spins, or scroll reveals) significantly increases the client-side JavaScript bundle size without providing proportional value, which hurts load times and main thread performance.
+**Action:** Replace heavy animation libraries with native CSS transitions/animations and standard web APIs like `IntersectionObserver` when animations are straightforward. This keeps bundle sizes small and utilizes hardware-accelerated CSS animations.
