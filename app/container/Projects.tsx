@@ -7,7 +7,7 @@ export default function Projects() {
     <Section id="projects" index="02" title="Projects">
       <div className="grid gap-6">
         {projects.map((p, i) => (
-          <div key={i} className="border border-line rounded-md p-8 hover:border-ink transition-colors">
+          <div key={i} className="group relative border border-line rounded-md p-8 hover:border-ink transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[#0A0A0A]">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <h3 className="font-display text-xl font-medium">{p.name}</h3>
@@ -18,11 +18,12 @@ export default function Projects() {
                   href={p.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ink-mute hover:text-ink transition-all hover:scale-110"
+                  className="text-ink-mute group-hover:text-ink transition-all focus:outline-none"
                   aria-label={`View ${p.name} project (opens in a new tab)`}
                   title={`View ${p.name} project`}
                 >
-                  <ExternalLink size={18} />
+                  <span className="absolute inset-0 z-10" aria-hidden="true"></span>
+                  <ExternalLink size={18} className="transition-transform group-hover:scale-110" />
                 </a>
               )}
             </div>
