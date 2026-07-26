@@ -29,3 +29,7 @@
 ## 2025-02-23 - Color Contrast for Muted Text
 **Learning:** Using overly light grays (like `#9A9A9A` on `#FFFFFF`, contrast 2.8:1) for secondary text (dates, locations, footers) causes accessibility failures and makes content hard to read for users with low vision.
 **Action:** Always ensure that even "muted" or "soft" text colors meet the WCAG AA minimum contrast ratio of 4.5:1 against their background. For white backgrounds, grays should generally be `#737373` or darker.
+
+## 2025-02-24 - Skip to Main Content & Focus Management
+**Learning:** When implementing a "Skip to main content" link, simply linking to an `id` (`href="#main-content"`) scrolls the page but does not consistently move programmatic focus across all browsers/screen readers if the target element (like `<main>`) is not naturally focusable.
+**Action:** Always add `tabIndex={-1}` to the target container (e.g., `<main id="main-content" tabIndex={-1}>`) so it can receive programmatic focus via the anchor link. Also, add `outline-none` (or similar) to prevent an unsightly focus ring from appearing around the entire page layout when jumped to.
