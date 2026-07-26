@@ -13,3 +13,7 @@
 ## 2023-10-27 - Inline SVGs over External Images for Basic Icons
 **Learning:** Using `next/image` to fetch small, basic icons (like GitHub/LinkedIn logos) from external providers (e.g., `img.icons8.com`) introduces unnecessary network latency (DNS lookup, TCP handshake, TLS negotiation for a new origin) and potential layout shift if the image loads slowly. The `next/image` component also has overhead that is disproportionate for simple monochromatic shapes.
 **Action:** Always use inline SVGs (or an icon library like `lucide-react` which generates inline SVGs) for basic UI icons. Only use `next/image` and external image providers for actual content images (photos, complex illustrations) where optimization, resizing, and lazy loading provide real value.
+
+## 2024-07-24 - Unblocking Server Streaming with Suspense Boundaries
+**Learning:** Fetching external data (like the GitHub GraphQL API in `<GithubActivity />`) inside a React Server Component (RSC) blocks the server from streaming the rest of the UI until the fetch completes. This delays the Time to First Byte (TTFB) and overall First Contentful Paint (FCP) of the entire page if the component is used near the bottom of a long page.
+**Action:** Always wrap data-fetching Server Components (especially those calling external APIs) in a `<Suspense>` boundary with a fallback skeleton. This unblocks the server, allowing the rest of the static application shell to stream down to the client immediately while the data finishes loading.
