@@ -17,3 +17,7 @@
 ## 2024-07-24 - Unblocking Server Streaming with Suspense Boundaries
 **Learning:** Fetching external data (like the GitHub GraphQL API in `<GithubActivity />`) inside a React Server Component (RSC) blocks the server from streaming the rest of the UI until the fetch completes. This delays the Time to First Byte (TTFB) and overall First Contentful Paint (FCP) of the entire page if the component is used near the bottom of a long page.
 **Action:** Always wrap data-fetching Server Components (especially those calling external APIs) in a `<Suspense>` boundary with a fallback skeleton. This unblocks the server, allowing the rest of the static application shell to stream down to the client immediately while the data finishes loading.
+
+## 2024-07-28 - Replace Framer Motion with Native CSS Animations
+**Learning:** Using heavy animation libraries like Framer Motion for simple scroll reveals or loading spinners adds significant, unnecessary weight to the JavaScript bundle size, which delays hydration and slows down initial page load.
+**Action:** Always prefer native CSS animations, CSS transitions, and native browser APIs like `IntersectionObserver` over JavaScript-heavy animation libraries unless complex orchestrated animations are strictly required.
