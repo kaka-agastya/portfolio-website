@@ -8,14 +8,16 @@ import Skills from "./container/Skills";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Nav />
-      <Hero />
-      <Experience />
-      <Projects />
-      <Education />
-      <Skills />
-      <Contact />
-    </main>
+      <main id="main-content" tabIndex={-1} className="outline-none">
+        <Hero />
+        <Experience />
+        <Projects />
+        <Education />
+        <Skills />
+        <Contact />
+      </main>
+    </>
   );
 }

@@ -17,6 +17,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`motion-safe:scroll-smooth ${Poppins.variable} ${Space.variable} ${FiraCode.variable}`}>
       <Analytics/>
       <body>
+        <a
+          href="#main-content"
+          className="fixed left-0 top-0 z-[9999] -translate-y-full bg-ink text-white px-4 py-2 text-sm font-mono focus:translate-y-0 transition-transform focus:outline-none"
+        >
+          Skip to main content
+        </a>
         <LoadingScreen />
         {children}
       </body>
