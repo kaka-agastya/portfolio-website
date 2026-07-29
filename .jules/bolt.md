@@ -17,3 +17,7 @@
 ## 2024-07-24 - Unblocking Server Streaming with Suspense Boundaries
 **Learning:** Fetching external data (like the GitHub GraphQL API in `<GithubActivity />`) inside a React Server Component (RSC) blocks the server from streaming the rest of the UI until the fetch completes. This delays the Time to First Byte (TTFB) and overall First Contentful Paint (FCP) of the entire page if the component is used near the bottom of a long page.
 **Action:** Always wrap data-fetching Server Components (especially those calling external APIs) in a `<Suspense>` boundary with a fallback skeleton. This unblocks the server, allowing the rest of the static application shell to stream down to the client immediately while the data finishes loading.
+
+## 2024-11-20 - Replacing Third-Party Animation Libraries with Native CSS and IntersectionObserver
+**Learning:** Heavy animation libraries like `framer-motion` significantly increase the client-side JavaScript bundle size. For simple animations like fade-ins, loading spinners, and scroll reveals, this overhead is unjustified and slows down page load times.
+**Action:** Replace `framer-motion` with native CSS transitions, Tailwind classes, and native `IntersectionObserver`. This achieves the same visual effects while significantly reducing the JS bundle size and removing third-party dependencies, as demonstrated in `components/Reveal.tsx` and `components/LoadingScreen.tsx`.

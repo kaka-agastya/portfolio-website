@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isRendered, setIsRendered] = useState(true);
 
   useEffect(() => {
     const handleLoad = () => {
@@ -28,6 +28,9 @@ export default function LoadingScreen() {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
+      // Wait for the exit animation to complete before removing from DOM
+      const timeout = setTimeout(() => setIsRendered(false), 600);
+      return () => clearTimeout(timeout);
     }
 
     return () => {
@@ -35,23 +38,16 @@ export default function LoadingScreen() {
     };
   }, [isLoading]);
 
+  if (!isRendered) return null;
+
   return (
-    <AnimatePresence>
-      {isLoading && (
-        <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white"
-        >
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-            className="w-10 h-10 border-4 border-line border-t-ink rounded-full mb-4"
-          />
-          <p className="font-mono text-sm text-ink-soft animate-pulse">Loading...</p>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white transition-opacity duration-[600ms] ease-in-out ${
+        isLoading ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}
+    >
+      <div className="w-10 h-10 border-4 border-line border-t-ink rounded-full mb-4 animate-[spin_1s_linear_infinite]" />
+      <p className="font-mono text-sm text-ink-soft animate-pulse">Loading...</p>
+    </div>
   );
 }
