@@ -21,3 +21,7 @@
 ## 2024-11-20 - Replacing Third-Party Animation Libraries with Native CSS and IntersectionObserver
 **Learning:** Heavy animation libraries like `framer-motion` significantly increase the client-side JavaScript bundle size. For simple animations like fade-ins, loading spinners, and scroll reveals, this overhead is unjustified and slows down page load times.
 **Action:** Replace `framer-motion` with native CSS transitions, Tailwind classes, and native `IntersectionObserver`. This achieves the same visual effects while significantly reducing the JS bundle size and removing third-party dependencies, as demonstrated in `components/Reveal.tsx` and `components/LoadingScreen.tsx`.
+
+## 2025-07-30 - Shared IntersectionObserver for Lists
+**Learning:** Creating a new `IntersectionObserver` instance inside a `useEffect` for every single list element (e.g., using a `<Reveal>` wrapper for each job item in `Experience.tsx`) leads to unnecessary memory and CPU overhead. Multiple observers fighting for main thread resources can cause jank on page load or scroll.
+**Action:** Instantiate a single module-level `IntersectionObserver` and use a `Map` (or `WeakMap` if appropriate) to store the callback for each observed `Element`. Register elements with this shared observer to minimize performance overhead when animating large lists.
