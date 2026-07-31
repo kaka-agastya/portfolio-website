@@ -1,6 +1,34 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
+// ⚡ Bolt: Use a single shared IntersectionObserver for all Reveal instances
+// instead of creating a new observer for every component. This reduces
+// memory footprint and CPU overhead when rendering many items.
+let sharedObserver: IntersectionObserver | null = null;
+const observerCallbacks = new WeakMap<Element, () => void>();
+
+function getSharedObserver() {
+  if (typeof window === "undefined") return null;
+  if (!sharedObserver) {
+    sharedObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const callback = observerCallbacks.get(entry.target);
+            if (callback) {
+              callback();
+              sharedObserver?.unobserve(entry.target);
+              observerCallbacks.delete(entry.target);
+            }
+          }
+        });
+      },
+      { rootMargin: "-80px" }
+    );
+  }
+  return sharedObserver;
+}
+
 export default function Reveal({
   children,
   delay = 0,
@@ -17,23 +45,16 @@ export default function Reveal({
     const currentRef = ref.current;
     if (!currentRef) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(currentRef);
-        }
-      },
-      {
-        rootMargin: "-80px",
-      }
-    );
-
-    observer.observe(currentRef);
+    const observer = getSharedObserver();
+    if (observer) {
+      observerCallbacks.set(currentRef, () => setIsVisible(true));
+      observer.observe(currentRef);
+    }
 
     return () => {
-      if (currentRef) {
+      if (currentRef && observer) {
         observer.unobserve(currentRef);
+        observerCallbacks.delete(currentRef);
       }
     };
   }, []);
