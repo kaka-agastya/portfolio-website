@@ -1,6 +1,35 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
+// ⚡ Bolt: Use a singleton IntersectionObserver and WeakMap to map DOM elements to their callbacks
+// This changes the complexity from O(n) to O(1) observer instantiations, reducing memory overhead and jank.
+const observerCallbacks = new WeakMap<Element, () => void>();
+let observer: IntersectionObserver | null = null;
+
+function getObserver() {
+  if (typeof window === "undefined") return null;
+  if (!observer) {
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const callback = observerCallbacks.get(entry.target);
+            if (callback) {
+              callback();
+              observer?.unobserve(entry.target);
+              observerCallbacks.delete(entry.target);
+            }
+          }
+        });
+      },
+      {
+        rootMargin: "-80px",
+      }
+    );
+  }
+  return observer;
+}
+
 export default function Reveal({
   children,
   delay = 0,
@@ -17,23 +46,13 @@ export default function Reveal({
     const currentRef = ref.current;
     if (!currentRef) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(currentRef);
-        }
-      },
-      {
-        rootMargin: "-80px",
-      }
-    );
-
-    observer.observe(currentRef);
+    observerCallbacks.set(currentRef, () => setIsVisible(true));
+    getObserver()?.observe(currentRef);
 
     return () => {
       if (currentRef) {
-        observer.unobserve(currentRef);
+        getObserver()?.unobserve(currentRef);
+        observerCallbacks.delete(currentRef);
       }
     };
   }, []);
