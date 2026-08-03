@@ -21,3 +21,6 @@
 ## 2024-11-20 - Replacing Third-Party Animation Libraries with Native CSS and IntersectionObserver
 **Learning:** Heavy animation libraries like `framer-motion` significantly increase the client-side JavaScript bundle size. For simple animations like fade-ins, loading spinners, and scroll reveals, this overhead is unjustified and slows down page load times.
 **Action:** Replace `framer-motion` with native CSS transitions, Tailwind classes, and native `IntersectionObserver`. This achieves the same visual effects while significantly reducing the JS bundle size and removing third-party dependencies, as demonstrated in `components/Reveal.tsx` and `components/LoadingScreen.tsx`.
+## 2026-08-03 - Prevent React re-renders on Typewriter effect
+**Learning:** Continuous micro-animations like typewriter effects trigger excessive re-renders if managed via React state.
+**Action:** Use `useRef` and direct DOM mutation (`ref.current.textContent`) inside intervals/requestAnimationFrame to update the UI without triggering React's render cycle.
