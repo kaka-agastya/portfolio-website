@@ -21,3 +21,7 @@
 ## 2024-11-20 - Replacing Third-Party Animation Libraries with Native CSS and IntersectionObserver
 **Learning:** Heavy animation libraries like `framer-motion` significantly increase the client-side JavaScript bundle size. For simple animations like fade-ins, loading spinners, and scroll reveals, this overhead is unjustified and slows down page load times.
 **Action:** Replace `framer-motion` with native CSS transitions, Tailwind classes, and native `IntersectionObserver`. This achieves the same visual effects while significantly reducing the JS bundle size and removing third-party dependencies, as demonstrated in `components/Reveal.tsx` and `components/LoadingScreen.tsx`.
+
+## 2024-06-01 - Direct DOM Mutation for Micro-Animations
+**Learning:** Using React state (`useState`) for high-frequency micro-animations like a typing effect (firing every 40ms) causes continuous, unnecessary React re-renders and reconciliation overhead, even if isolated to a small component.
+**Action:** Use `useRef` and direct DOM mutation (`ref.current.textContent`) for high-frequency interval-based visual updates to completely bypass React's render cycle and improve runtime performance.
