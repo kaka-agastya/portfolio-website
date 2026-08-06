@@ -33,3 +33,8 @@
 ## 2026-07-18 - Block Link / Expanded Click Area Pattern
 **Learning:** Expanding the click area of a link within a card improves the user experience by providing a larger target for pointing devices and touch interactions. However, just wrapping the entire card in an anchor tag can sometimes be semantically problematic (e.g., if there's other interactive content, or for nested semantics). Using an absolutely positioned empty `<span>` inside the `<a>` tag and scoping it with `relative` on the container expands the click hit area seamlessly.
 **Action:** Use the `<span className="absolute inset-0 z-10" aria-hidden="true"></span>` pattern inside links to expand their hit area to their nearest `relative` positioned container. Always handle keyboard focus by removing it from the hidden anchor (`focus:outline-none`) and moving the outline to the container itself (using Tailwind's `has-[:focus-visible]:outline` variants) to maintain WCAG 2.4.7 visible focus.
+
+
+## 2026-08-06 - Skip to Main Content Link Pattern
+**Learning:** When implementing 'Skip to main content' links, placing the <nav> element inside the target <main> defeats the purpose, as the skipped region still contains navigation. Additionally, the target element needs tabIndex={-1} and outline-none to handle programmatic focus cleanly.
+**Action:** Always structure the document so <nav> is a sibling, not a child, of the <main> element targeted by the skip link. Ensure the target element has tabIndex={-1} and outline-none.
