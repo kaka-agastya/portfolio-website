@@ -41,6 +41,25 @@ export const experience = [
   //   tags: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn UI", "Framer Motion", "VPS", "CI/CD"],
   // },
   {
+    role: "Web Developer (CTO)",
+    org: "Calmify Kit — HETI Project (Funded by ADB)",
+    period: "May 2026 - Present",
+    category: "Experience",
+    points: [
+      "Led end-to-end web development as CTO for Calmify Kit, a mental health support platform built with Next.js, delivering self-help tools including guided breathing exercises, relaxation music, and a panic button for immediate patient support.",
+      "Designed and implemented an initial assessment system to evaluate patients' mental health condition, paired with an admin-managed workflow to assign psychologists based on patient needs.",
+      "Built a psychologist dashboard providing access to patient biodata, assessment results, and consultation history, enabling informed and continuous care.",
+      "Integrated an AI-powered chatbot using Gemini to assist patients with mental health guidance, first-aid information, and platform feature usage.",
+      "Selected as a grant beneficiary under the ADB-funded HETI Project for research, innovation, and entrepreneurship.",
+    ],
+    tags: [
+      "Next.js",
+      "Gemini",
+      "AI Chatbot",
+      "Mental Health Platform",
+    ],
+  },
+  {
     role: "Web Development Intern",
     org: "Barunastra ITS Robotics Team",
     period: "Oct — Dec 2024",
