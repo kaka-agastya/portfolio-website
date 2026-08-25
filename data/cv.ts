@@ -163,6 +163,19 @@ export const experience = [
 
 export const projects = [
   {
+    name: "Algoritme.id",
+    role: "Web Developer",
+    period: "",
+    points: [
+      "Developed and maintained Algoritme.id, an interactive learning platform designed to help users study programming and computer science concepts through a structured, easy-to-navigate website.",
+      "Built the platform as a central hub where learners can access course materials, track their learning journey, and engage with content tailored to different skill levels.",
+      "Built the website entirely using WordPress as the CMS, with Elementor as the page builder to design and customize layouts, sections, and interactive elements.",
+      "Enabled quick content updates and consistent branding across the platform while maintaining a responsive, user-friendly experience across devices, allowing the site to launch and iterate quickly without the overhead of building a custom framework from scratch.",
+    ],
+    tags: ["WordPress", "Elementor"],
+    link: "https://algoritme.id/",
+  },
+  {
     name: "Rextra",
     role: "Frontend Developer",
     period: "Nov 2025 — Mar 2026",
