@@ -2,55 +2,44 @@
 import { useState, useEffect } from "react";
 
 export default function LoadingScreen() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isRendered, setIsRendered] = useState(true);
+  const [visible, setVisible] = useState(false);
+  const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    const MIN_MS = 400;
-    const startTime = Date.now();
+    // If the page is already fully loaded (e.g. return visits, fast/cached),
+    // skip the loading screen entirely — showing it would just cause a flash.
+    if (document.readyState === "complete") return;
+
+    setVisible(true);
+    document.body.style.overflow = "hidden";
 
     const dismiss = () => {
-      const elapsed = Date.now() - startTime;
-      const remaining = Math.max(0, MIN_MS - elapsed);
-      setTimeout(() => setIsLoading(false), remaining);
+      setFading(true);
+      document.body.style.overflow = "";
+      setTimeout(() => setVisible(false), 650);
     };
 
-    if (document.readyState === "complete") {
-      dismiss();
-    } else {
-      window.addEventListener("load", dismiss, { once: true });
-      // Safety fallback
-      const fallback = setTimeout(dismiss, 3000);
-      return () => {
-        window.removeEventListener("load", dismiss);
-        clearTimeout(fallback);
-      };
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isLoading) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-      // Wait for the exit animation to complete before removing from DOM
-      const timeout = setTimeout(() => setIsRendered(false), 650);
-      return () => clearTimeout(timeout);
-    }
+    window.addEventListener("load", dismiss, { once: true });
+    const fallback = setTimeout(dismiss, 3000);
 
     return () => {
+      window.removeEventListener("load", dismiss);
+      clearTimeout(fallback);
       document.body.style.overflow = "";
     };
-  }, [isLoading]);
+  }, []);
 
-  if (!isRendered) return null;
+  if (!visible) return null;
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[var(--color-paper)] transition-opacity duration-[600ms] ease-in-out ${isLoading ? "opacity-100" : "opacity-0 pointer-events-none"
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[var(--color-paper)] transition-opacity duration-[600ms] ease-in-out ${fading ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
     >
-      <div className="w-10 h-10 border-4 border-line border-t-ink rounded-full mb-4 animate-[spin_1s_linear_infinite]" />
+      <div
+        className="w-10 h-10 border-4 border-line border-t-ink rounded-full mb-4 animate-[spin_1s_linear_infinite]"
+        style={{ willChange: "transform" }}
+      />
       <p className="font-mono text-sm text-ink-soft animate-pulse">Loading...</p>
     </div>
   );
