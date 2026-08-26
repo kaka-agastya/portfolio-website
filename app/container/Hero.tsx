@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section id="intro" className="min-h-screen flex flex-col justify-center px-6 lg:px-32 xl:px-40 max-w-content mx-auto">
 
-      <div className="fade-up border border-line rounded-b-md rounded-tr-md p-8 lg:p-14 bg-white">
+      <div className="fade-up border border-line rounded-b-md rounded-tr-md p-8 lg:p-14 bg-[var(--color-paper)]">
         <p aria-hidden="true" className="font-mono text-xs text-ink-mute mb-6">
           <span className="text-ink">const</span> role <span className="text-ink">=</span>{" "}
           <TypewriterText text={profile.role} />

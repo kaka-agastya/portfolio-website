@@ -3,6 +3,7 @@ import "./globals.css";
 import { FiraCode, Poppins, Space } from "@/lib/font";
 import { Analytics } from "@vercel/analytics/next"
 import LoadingScreen from "@/components/LoadingScreen";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Kaka Agastya Herlambang Wahyudi — Frontend Web Developer",
@@ -17,9 +18,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`motion-safe:scroll-smooth ${Poppins.variable} ${Space.variable} ${FiraCode.variable}`}>
       <Analytics/>
       <body>
-        <LoadingScreen />
-        {children}
+        <ThemeProvider>
+          <LoadingScreen />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
-}
+}
