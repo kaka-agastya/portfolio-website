@@ -6,19 +6,24 @@ export default function LoadingScreen() {
   const [isRendered, setIsRendered] = useState(true);
 
   useEffect(() => {
-    const handleLoad = () => {
-      setIsLoading(false);
+    const MIN_MS = 400;
+    const startTime = Date.now();
+
+    const dismiss = () => {
+      const elapsed = Date.now() - startTime;
+      const remaining = Math.max(0, MIN_MS - elapsed);
+      setTimeout(() => setIsLoading(false), remaining);
     };
 
     if (document.readyState === "complete") {
-      const timeout = setTimeout(() => setIsLoading(false), 0);
-      return () => clearTimeout(timeout);
+      dismiss();
     } else {
-      window.addEventListener("load", handleLoad);
-      const timeout = setTimeout(() => setIsLoading(false), 2500);
+      window.addEventListener("load", dismiss, { once: true });
+      // Safety fallback
+      const fallback = setTimeout(dismiss, 3000);
       return () => {
-        window.removeEventListener("load", handleLoad);
-        clearTimeout(timeout);
+        window.removeEventListener("load", dismiss);
+        clearTimeout(fallback);
       };
     }
   }, []);
@@ -27,14 +32,14 @@ export default function LoadingScreen() {
     if (isLoading) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
       // Wait for the exit animation to complete before removing from DOM
-      const timeout = setTimeout(() => setIsRendered(false), 600);
+      const timeout = setTimeout(() => setIsRendered(false), 650);
       return () => clearTimeout(timeout);
     }
 
     return () => {
-      document.body.style.overflow = "unset";
+      document.body.style.overflow = "";
     };
   }, [isLoading]);
 
@@ -42,9 +47,8 @@ export default function LoadingScreen() {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white transition-opacity duration-[600ms] ease-in-out ${
-        isLoading ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[var(--color-paper)] transition-opacity duration-[600ms] ease-in-out ${isLoading ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
     >
       <div className="w-10 h-10 border-4 border-line border-t-ink rounded-full mb-4 animate-[spin_1s_linear_infinite]" />
       <p className="font-mono text-sm text-ink-soft animate-pulse">Loading...</p>
