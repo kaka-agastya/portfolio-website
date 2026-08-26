@@ -77,11 +77,11 @@ export default function Nav() {
             aria-current={active === s.id ? "true" : undefined}
           >
             <span
-              className={`h-px transition-all duration-300 ${active === s.id ? "w-8 bg-ink" : "w-4 bg-ink-mute group-hover:w-6 group-hover:bg-ink-soft"
+              className={`h-px transition-all duration-500 ${active === s.id ? "w-8 bg-ink" : "w-4 bg-ink-mute group-hover:w-6 group-hover:bg-ink-soft"
                 }`}
             />
             <span
-              className={`font-mono text-[11px] tracking-wide uppercase transition-colors duration-300 ${active === s.id ? "text-ink" : "text-ink-mute group-hover:text-ink-soft"
+              className={`font-mono text-[11px] tracking-wide uppercase transition-colors duration-500 ${active === s.id ? "text-ink" : "text-ink-mute group-hover:text-ink-soft"
                 }`}
             >
               {s.label}
@@ -97,11 +97,11 @@ export default function Nav() {
         aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
         className={`fixed bottom-8 right-8 z-50 w-11 h-11 rounded-full flex items-center justify-center
          bg-[var(--color-paper)] text-[var(--color-ink-soft)] hover:text-[var(--color-ink)]
-         hover:shadow-md transition-all duration-300 ease-in-out
+         hover:shadow-md transition-all duration-500 ease-in-out
          ${visible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
       >
         <span
-          className="absolute transition-all duration-300 ease-in-out"
+          className="absolute transition-all duration-500 ease-in-out"
           style={{
             opacity: theme === "dark" ? 1 : 0,
             transform: theme === "dark" ? "rotate(0deg) scale(1)" : "rotate(90deg) scale(0.5)",
@@ -110,7 +110,7 @@ export default function Nav() {
           <Sun size={18} strokeWidth={1.5} />
         </span>
         <span
-          className="absolute transition-all duration-300 ease-in-out"
+          className="absolute transition-all duration-500 ease-in-out"
           style={{
             opacity: theme === "light" ? 1 : 0,
             transform: theme === "light" ? "rotate(0deg) scale(1)" : "-rotate(90deg) scale(0.5)",
