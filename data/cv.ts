@@ -50,7 +50,6 @@ export const experience = [
       "Designed and implemented an initial assessment system to evaluate patients' mental health condition, paired with an admin-managed workflow to assign psychologists based on patient needs.",
       "Built a psychologist dashboard providing access to patient biodata, assessment results, and consultation history, enabling informed and continuous care.",
       "Integrated an AI-powered chatbot using Gemini to assist patients with mental health guidance, first-aid information, and platform feature usage.",
-      "Selected as a grant beneficiary under the ADB-funded HETI Project for research, innovation, and entrepreneurship.",
     ],
     tags: [
       "Next.js",
