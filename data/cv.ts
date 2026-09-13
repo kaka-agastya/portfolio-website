@@ -231,10 +231,15 @@ export const projects = [
 
 export const skills = {
   hard: [
-    "Frontend Development",
+    "Payment Integration",
     "Authentication & Authorization",
     "State Management",
     "Responsive Web Design",
+    "Component-based Development",
+    "Form Handling & Validation",
+    "Routing & Navigation",
+    "Data Fetching",
+    "Pagination",
   ],
   soft: [
     "Problem Solving",
@@ -258,7 +263,13 @@ export const skills = {
     "TypeScript",
     "Tailwind CSS",
     "Shadcn UI",
+    "Material UI",
     "Bun",
+    "Pnpm",
+    "Npm",
+    "Yarn",
+    "Animate on Scroll",
+    "GSAP",
     "Framer Motion",
   ],
 };
