@@ -15,13 +15,13 @@ export const education = [
     school: "Institut Teknologi Sepuluh Nopember (ITS)",
     program:
       "Information System, Faculty of Electrical Engineering and Intelligent Informatics",
-    period: "Jul 2024 — Present",
+    period: "Jul 2024 - Present",
     notes: ["GPA 3.94/4.00"],
   },
   {
     school: "SMAN 1 Glagah",
     program: "Math & Science",
-    period: "Jul 2021 — May 2024",
+    period: "Jul 2021 - May 2024",
     notes: ["School representative for PRODISTIK ITS"],
   },
 ];
@@ -30,7 +30,7 @@ export const experience = [
   // {
   //   role: "Web Developer",
   //   org: "Terangin ITS",
-  //   period: "May 2026 — Present",
+  //   period: "May 2026 - Present",
   //   category: "Experience",
   //   points: [
   //     "Maintained a high performance web application using Next.js, TypeScript, and Tailwind CSS, incorporating Shadcn UI and Framer Motion for enhanced user interactivity and visual engagement.",
@@ -42,7 +42,7 @@ export const experience = [
   // },
   {
     role: "Web Developer (CTO)",
-    org: "Calmify Kit — HETI Project (Funded by ADB)",
+    org: "Calmify Kit - HETI Project (Funded by ADB)",
     period: "May 2026 - Present",
     category: "Experience",
     points: [
@@ -61,7 +61,7 @@ export const experience = [
   {
     role: "Web Development Intern",
     org: "Barunastra ITS Robotics Team",
-    period: "Oct — Dec 2024",
+    period: "Oct - Dec 2024",
     category: "Experience",
     points: [
       "Maintained a high performance web application using Next.js, TypeScript, and Tailwind CSS, incorporating Shadcn UI and Framer Motion for enhanced user interactivity and visual engagement.",
@@ -82,7 +82,7 @@ export const experience = [
   {
     role: "Frontend Developer",
     org: "ITS Material Advantage Chapter",
-    period: "Feb — Nov 2025",
+    period: "Feb - Nov 2025",
     category: "Organizational",
     points: [
       "Executed high-fidelity UI/UX designs into responsive code using Next.js, Shadcn UI, TypeScript and Tailwind CSS, delivering perfect implementation for the 'About Us' pages.",
@@ -100,7 +100,7 @@ export const experience = [
   {
     role: "Frontend Developer",
     org: "Society of Renewable Energy ITS",
-    period: "Aug 2025 — Jun 2026",
+    period: "Aug 2025 - Jun 2026",
     category: "Organizational",
     points: [
       "Developed the Associate Announcement Page using Next.js, React, and Shadcn UI, creating a seamless and responsive interface to effectively showcase new organizational members.",
@@ -111,7 +111,7 @@ export const experience = [
   {
     role: "Senior Frontend Developer",
     org: "TEDxITS 2026",
-    period: "Jan 2026 — Jun 2026",
+    period: "Jan 2026 - Jun 2026",
     category: "Committee",
     points: [
       "Conceptualized a modular form component library leveraging Shadcn UI, standardizing input patterns and validation logic to ensure UI consistency and accelerate feature development for the entire team.",
@@ -123,7 +123,7 @@ export const experience = [
   {
     role: "Senior Frontend Developer",
     org: "Ini Lho ITS 2026",
-    period: "Sep 2025 — Feb 2026",
+    period: "Sep 2025 - Feb 2026",
     category: "Committee",
     points: [
       "Delivered high-fidelity landing pages for multiple pages (Open Campus, Forda, Prestasi) using Next.js, Animate on Scroll and Tailwind CSS, ensuring consistent branding and responsive layouts across all viewports.",
@@ -135,7 +135,7 @@ export const experience = [
   {
     role: "Senior Frontend Developer",
     org: "Future Energy Summit 2026",
-    period: "Oct 2025 — Jun 2026",
+    period: "Oct 2025 - Jun 2026",
     category: "Committee",
     points: [
       "Developed the detailed Brand Ambassador Dashboard, integrating backend data to visualize specific metrics and candidate profiles, enabling the committee to make data-driven decisions efficiently.",
@@ -148,7 +148,7 @@ export const experience = [
   {
     role: "Web Developer",
     org: "SI Berdampak (Volunteering)",
-    period: "Oct — Dec 2025",
+    period: "Oct - Dec 2025",
     category: "Volunteering",
     points: [
       "Engineered a secure donation payment system by integrating Midtrans Gateway, enabling seamless and reliable transaction processing to support the organization's fundraising operations.",
@@ -164,7 +164,7 @@ export const projects = [
   {
     name: "Algoritme.id",
     role: "Web Developer",
-    period: "Jul 2026- Present",
+    period: "Jul 2026 - Present",
     points: [
       "Developed and maintained Algoritme.id, an interactive learning platform designed to help users study programming and computer science concepts through a structured, easy-to-navigate website.",
       "Built the platform as a central hub where learners can access course materials, track their learning journey, and engage with content tailored to different skill levels.",
@@ -177,7 +177,7 @@ export const projects = [
   {
     name: "Rextra",
     role: "Frontend Developer",
-    period: "Nov 2025 — Mar 2026",
+    period: "Nov 2025 - Mar 2026",
     points: [
       "Led a robust CI/CD pipeline using GitHub Actions and Docker, automating the build and deployment process to ensure consistent production environments and reduce manual release errors.",
       "Architected the initial frontend repository, establishing coding standards and folder structures that serve as the scalable foundation for the entire web dashboard project.",
@@ -190,7 +190,7 @@ export const projects = [
   {
     name: "Rifnity",
     role: "Moodle-based OSN Tryout Platform with Automated Registration",
-    period: "",
+    period: "Mar 2026 - Present",
     points: [
       "Built a Moodle-based tryout platform for SD–SMA students preparing for OSN (National Science Olympiad), supporting course segmentation by school level (SD, SMP, SMA) so students can access relevant tryout materials in one place.",
       "Integrated student registration with Google Sheets via a custom Google Apps Script, automating the entire onboarding flow from account creation using Moodle's REST API, course enrollment based on school level, to sending personalized HTML login credentials via email.",
@@ -202,8 +202,8 @@ export const projects = [
   },
   {
     name: "SiFinance",
-    role: "Website Developer — AI-Powered Personal Finance App (UX Design Course Project)",
-    period: "",
+    role: "Website Developer - AI-Powered Personal Finance App (UX Design Course Project)",
+    period: "Mar - June 2026",
     org: "Institut Teknologi Sepuluh Nopember (ITS)",
     points: [
       "Contributed to SiFinance, a personal finance management app prototype for individuals and families to track transactions, set budgets, and monitor cash flow, featuring AI-powered transaction logging alongside manual logging, a financial dashboard, and budget management tools.",
@@ -215,8 +215,8 @@ export const projects = [
   },
   {
     name: "WANIGO",
-    role: "Frontend Developer — Digital Waste Bank Company Profile",
-    period: "",
+    role: "Frontend Developer - Digital Waste Bank Company Profile",
+    period: "May - June 2026",
     org: "Institut Teknologi Sepuluh Nopember (ITS)",
     points: [
       "Built WANIGO, a digital waste bank platform based in Surabaya, Indonesia, connecting residents, community waste banks, recycling industries, and local government into one integrated digital ecosystem to support circular economy initiatives at the grassroots level.",
@@ -265,11 +265,11 @@ export const skills = {
 
 export const awards = [
   {
-    title: "Awardee — Bakti BCA Scholarship 2026",
+    title: "Awardee - Bakti BCA Scholarship 2026",
     org: "PT Bank Central Asia Tbk (BCA)",
   },
   {
-    title: "1st Place — SWAg Business Case Competition 2025",
+    title: "1st Place - SWAg Business Case Competition 2025",
     org: "Universitas Gadjah Mada",
   },
   {
