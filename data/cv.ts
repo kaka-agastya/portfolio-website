@@ -256,7 +256,7 @@ export const skills = {
     "Bruno",
     "Docker",
   ],
-  languages: ["Bahasa Indonesia", "English"],
+  languages: ["Bahasa Indonesia", "English", "Javanese", "Mandarin"],
   stack: [
     "React",
     "Next.js",
