@@ -13,7 +13,7 @@ export default function Education() {
               <p className="text-sm text-ink-soft mt-1">{e.program}</p>
               <ul className="mt-3 space-y-1">
                 {e.notes.map((n, j) => (
-                  <li key={j} className="text-sm text-ink-mute">— {n}</li>
+                  <li key={j} className="text-sm text-ink-mute">- {n}</li>
                 ))}
               </ul>
             </div>
