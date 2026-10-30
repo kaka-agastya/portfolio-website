@@ -1,46 +1,55 @@
 import Reveal from "@/components/Reveal";
+import Collapsible from "@/components/Collapsible";
 import Section from "../../components/Section";
 import { experience } from "@/data/cv";
 
 export default function Experience() {
   return (
-    <Section id="experience" index="01" title="Experience">
-      <div className="space-y-14">
+    <Section
+      id="experience"
+      index="01"
+      label="Experience"
+      title="Shipping with teams of every size."
+      intro="From a funded health platform to campus committees, I build and lead frontends that real people rely on. Open a role to see what I delivered."
+    >
+      <Reveal stagger={0.05} className="border-t border-guide">
         {experience.map((job, i) => (
-          <Reveal key={i} delay={i * 0.05}>
-          <div key={i} className="grid lg:grid-cols-[200px_1fr] gap-4 lg:gap-10">
-            <div>
-              <p className="font-mono text-xs text-ink-mute">{job.period}</p>
-              <p className="font-mono text-[11px] uppercase tracking-wide text-ink-mute mt-1">
-                {job.category}
-              </p>
-            </div>
-            <div>
-              <h3 className="font-display text-xl font-medium">{job.role}</h3>
-              <p className="text-ink-soft text-sm mt-1">{job.org}</p>
-              <ul className="mt-4 space-y-2">
+          <Collapsible
+            key={i}
+            defaultOpen={i === 0}
+            className="border-b border-guide last:border-b-0"
+            buttonClassName="group px-5 py-6 sm:px-8 lg:px-16 lg:py-7 xl:px-24 transition-colors hover:bg-bg-soft"
+            summary={
+              <span className="grid flex-1 gap-2 lg:grid-cols-[3rem_minmax(0,1.4fr)_minmax(0,1fr)_10rem] lg:items-baseline lg:gap-8">
+                <span className="font-mono text-xs text-fg-muted">{String(i + 1).padStart(2, "0")}</span>
+                <span className="font-display text-xl font-medium tracking-tight lg:text-2xl">{job.role}</span>
+                <span className="text-sm text-fg-muted">{job.org}</span>
+                <span className="font-mono text-xs text-fg-muted lg:text-right">{job.period}</span>
+              </span>
+            }
+          >
+            <div className="grid gap-6 px-5 pb-8 sm:px-8 lg:grid-cols-[3rem_minmax(0,1.4fr)_minmax(0,1fr)_10rem] lg:gap-8 lg:px-16 xl:px-24">
+              <span className="hidden lg:block" />
+              <ul className="space-y-3">
                 {job.points.map((p, j) => (
-                  <li key={j} className="text-sm text-ink-soft leading-relaxed pl-4 relative">
-                    <span className="absolute left-0 top-[0.6em] w-1.5 h-px bg-ink-mute" />
+                  <li key={j} className="relative pl-5 text-sm leading-relaxed text-fg-muted">
+                    <span className="absolute top-[0.55em] left-0 size-1.5 bg-current opacity-60" aria-hidden="true" />
                     {p}
                   </li>
                 ))}
               </ul>
-              <div className="flex flex-wrap gap-2 mt-5">
+              <div className="flex flex-wrap content-start gap-2 lg:col-span-2">
+                <span className="border border-current px-2 py-1 font-mono text-[11px] uppercase">{job.category}</span>
                 {job.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="font-mono text-[11px] border border-line rounded px-2 py-1 text-ink-soft"
-                  >
+                  <span key={t} className="border border-guide px-2 py-1 font-mono text-[11px] text-fg-muted">
                     {t}
                   </span>
                 ))}
               </div>
             </div>
-          </div>
-          </Reveal>
+          </Collapsible>
         ))}
-      </div>
+      </Reveal>
     </Section>
   );
 }
