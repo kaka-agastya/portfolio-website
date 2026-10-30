@@ -73,7 +73,7 @@ export default function Nav() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 px-3 pt-3 sm:px-5">
+    <header className="sticky top-0 z-50 bg-linear-to-b from-bg from-55% to-transparent px-3 pt-3 pb-3 sm:px-5">
       <div className="flex h-16 items-center justify-between gap-4 rounded-2xl border-2 border-line bg-paper px-3 shadow-brutal-sm sm:px-4">
         <a href="#" className="flex items-center gap-2.5" aria-label="Back to top">
           <Logo />
