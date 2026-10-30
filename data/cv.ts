@@ -165,6 +165,7 @@ export const projects = [
     name: "Algoritme.id",
     role: "Web Developer",
     period: "Jul 2026 - Present",
+    image: "/projects/algoritme.svg",
     points: [
       "Developed and maintained Algoritme.id, an interactive learning platform designed to help users study programming and computer science concepts through a structured, easy-to-navigate website.",
       "Built the platform as a central hub where learners can access course materials, track their learning journey, and engage with content tailored to different skill levels.",
@@ -178,6 +179,7 @@ export const projects = [
     name: "Rextra",
     role: "Frontend Developer",
     period: "Nov 2025 - Mar 2026",
+    image: "/projects/rextra.svg",
     points: [
       "Led a robust CI/CD pipeline using GitHub Actions and Docker, automating the build and deployment process to ensure consistent production environments and reduce manual release errors.",
       "Architected the initial frontend repository, establishing coding standards and folder structures that serve as the scalable foundation for the entire web dashboard project.",
@@ -191,6 +193,7 @@ export const projects = [
     name: "Rifnity",
     role: "Moodle-based OSN Tryout Platform with Automated Registration",
     period: "Mar 2026 - Present",
+    image: "/projects/rifnity.svg",
     points: [
       "Built a Moodle-based tryout platform for SD–SMA students preparing for OSN (National Science Olympiad), supporting course segmentation by school level (SD, SMP, SMA) so students can access relevant tryout materials in one place.",
       "Integrated student registration with Google Sheets via a custom Google Apps Script, automating the entire onboarding flow from account creation using Moodle's REST API, course enrollment based on school level, to sending personalized HTML login credentials via email.",
@@ -204,6 +207,7 @@ export const projects = [
     name: "SiFinance",
     role: "Website Developer - AI-Powered Personal Finance App (UX Design Course Project)",
     period: "Mar - June 2026",
+    image: "/projects/sifinance.svg",
     org: "Institut Teknologi Sepuluh Nopember (ITS)",
     points: [
       "Contributed to SiFinance, a personal finance management app prototype for individuals and families to track transactions, set budgets, and monitor cash flow, featuring AI-powered transaction logging alongside manual logging, a financial dashboard, and budget management tools.",
@@ -217,6 +221,7 @@ export const projects = [
     name: "WANIGO",
     role: "Frontend Developer - Digital Waste Bank Company Profile",
     period: "May - June 2026",
+    image: "/projects/wanigo.svg",
     org: "Institut Teknologi Sepuluh Nopember (ITS)",
     points: [
       "Built WANIGO, a digital waste bank platform based in Surabaya, Indonesia, connecting residents, community waste banks, recycling industries, and local government into one integrated digital ecosystem to support circular economy initiatives at the grassroots level.",
