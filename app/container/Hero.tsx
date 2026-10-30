@@ -76,7 +76,7 @@ export default function Hero() {
       </div>
 
       {/* Tilted ticker */}
-      <div className="mt-20 -rotate-2 border-y-2 border-line bg-line py-4 text-paper lg:mt-28">
+      <div className="mt-20 -mx-[5vw] -rotate-2 border-y-2 border-line bg-line py-4 text-paper lg:mt-28">
         <Marquee items={skills.stack} className="font-display text-xl font-semibold tracking-tight sm:text-2xl" />
       </div>
     </section>
