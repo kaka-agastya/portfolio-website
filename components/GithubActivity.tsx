@@ -41,13 +41,13 @@ export default async function GithubActivity({ username }: { username: string })
   const total = await getGithubContributions();
 
   return (
-    <div className="flex h-full min-w-0 flex-col justify-between gap-6 p-5 sm:p-8 xl:p-10">
-      <p className="flex items-center justify-between font-mono text-xs uppercase tracking-wider text-fg-muted">
-        <span>GitHub Activity</span>
-        <span>This year</span>
+    <div className="flex h-full min-w-0 flex-col justify-between gap-6 p-6">
+      <p className="flex items-center justify-between font-mono text-xs font-medium uppercase tracking-wider">
+        <span className="rounded-full border-2 border-line bg-mint px-2.5 py-0.5">GitHub Activity</span>
+        <span className="text-fg-muted">This year</span>
       </p>
 
-      <p className="font-display text-5xl font-medium tracking-tight tabular-nums">
+      <p className="font-display text-5xl font-semibold tracking-tight tabular-nums">
         {total !== null ? total.toLocaleString("id-ID") : "—"}
         <span className="mt-2 block font-body text-sm font-normal tracking-normal text-fg-muted">contributions</span>
       </p>
