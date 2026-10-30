@@ -58,9 +58,9 @@ export default function Contact() {
               <a
                 href={c.href}
                 {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="flex items-center justify-between gap-3 text-sm font-medium break-all"
+                className="flex items-center justify-between gap-3 text-sm font-medium"
               >
-                <span className="link-line">{c.value}</span>
+                <span className="link-line min-w-0 wrap-break-word">{c.value}</span>
                 <ArrowUpRight size={18} className="shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 {c.external && <span className="sr-only">(opens in a new tab)</span>}
               </a>
