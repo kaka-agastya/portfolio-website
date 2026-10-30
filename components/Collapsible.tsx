@@ -4,10 +4,13 @@ import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
 function PlusIcon({ open }: { open: boolean }) {
   return (
-    <span className="relative block size-3 shrink-0" aria-hidden="true">
-      <span className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-current" />
+    <span
+      className={`relative flex size-9 shrink-0 items-center justify-center rounded-full border-2 border-line transition-[background-color,rotate] duration-300 ${open ? "rotate-180 bg-sun" : "bg-paper"}`}
+      aria-hidden="true"
+    >
+      <span className="absolute h-0.5 w-3.5 rounded bg-line" />
       <span
-        className={`absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-current transition-transform duration-300 ${open ? "scale-y-0" : "scale-y-100"}`}
+        className={`absolute h-3.5 w-0.5 rounded bg-line transition-transform duration-300 ${open ? "scale-y-0" : "scale-y-100"}`}
       />
     </span>
   );

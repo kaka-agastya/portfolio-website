@@ -27,7 +27,7 @@ export default function Marquee({ items, className = "" }: { items: string[]; cl
     items.map((item, i) => (
       <span key={`${hidden}-${i}`} aria-hidden={hidden || undefined} className="flex items-center gap-8 pr-8">
         <span>{item}</span>
-        <span className="size-1.5 bg-current opacity-60" aria-hidden="true" />
+        <span className="text-sun" aria-hidden="true">✦</span>
       </span>
     ));
 
