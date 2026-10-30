@@ -20,20 +20,20 @@
 :root {
   --paper: #f4f2e8;
   --paper-soft: #ebe7d8;
-  --ink: #0755b5;
-  --ink-muted: #326daa;
+  --ink: #2448c9;
+  --ink-muted: #4a5fb8;
   --guide-mix: 40%;
   /* Inverted blocks stay brand blue in both themes */
-  --accent: #0755b5;
+  --accent: #2448c9;
   --accent-ink: #f4f2e8;
 }
 
 /* ── Dark mode: deep navy paper, ivory ink ─────────────────── */
 .dark {
-  --paper: #061a36;
-  --paper-soft: #0a2447;
+  --paper: #0a1638;
+  --paper-soft: #111f4a;
   --ink: #f4f2e8;
-  --ink-muted: color-mix(in srgb, #f4f2e8 70%, #061a36);
+  --ink-muted: color-mix(in srgb, #f4f2e8 70%, #0a1638);
   --guide-mix: 25%;
 }
 

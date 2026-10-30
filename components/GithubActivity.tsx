@@ -60,7 +60,7 @@ export default async function GithubActivity({ username }: { username: string })
       >
         {/* ⚡ Bolt: Deferred loading of off-screen chart image to improve initial LCP & bandwidth */}
         <img
-          src={`https://ghchart.rshah.org/0755b5/${username}`}
+          src={`https://ghchart.rshah.org/2448c9/${username}`}
           alt={`${username}'s GitHub contribution chart`}
           className="min-w-[600px]"
           loading="lazy"
