@@ -41,7 +41,7 @@ export default async function GithubActivity({ username }: { username: string })
   const total = await getGithubContributions();
 
   return (
-    <div className="flex h-full flex-col justify-between gap-6 p-5 sm:p-8 xl:p-10">
+    <div className="flex h-full min-w-0 flex-col justify-between gap-6 p-5 sm:p-8 xl:p-10">
       <p className="flex items-center justify-between font-mono text-xs uppercase tracking-wider text-fg-muted">
         <span>GitHub Activity</span>
         <span>This year</span>
@@ -53,7 +53,7 @@ export default async function GithubActivity({ username }: { username: string })
       </p>
 
       <div
-        className="overflow-x-auto"
+        className="no-scrollbar overflow-x-auto"
         tabIndex={0}
         role="region"
         aria-label="GitHub contribution chart"

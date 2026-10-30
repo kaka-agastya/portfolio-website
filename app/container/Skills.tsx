@@ -37,7 +37,7 @@ export default function Skills() {
             </ul>
           </Reveal>
         ))}
-        <div className="bg-bg">
+        <div className="min-w-0 bg-bg">
           <Suspense fallback={<div className="min-h-55 animate-pulse bg-bg-soft" />}>
             <GithubActivity username="kaka-agastya" />
           </Suspense>

@@ -110,3 +110,12 @@ body {
 @media (prefers-reduced-motion: reduce) {
   * { transition-duration: 0.001ms !important; }
 }
+
+/* Scrollable without a visible scrollbar */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
