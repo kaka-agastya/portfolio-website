@@ -36,7 +36,9 @@ function Glyph({ letter }: { letter: string }) {
             y={c.y * CELL + 0.06}
             width={0.88}
             height={0.88}
-            fill="currentColor"
+            className="fill-sun"
+            stroke="#16161d"
+            strokeWidth={0.06}
           />
         ))}
       </svg>
@@ -73,7 +75,7 @@ export default function LoadingScreen() {
         opacity: 0,
         duration: 0.55,
         ease: "power3.in",
-        stagger: { each: 0.035, from: "random" },
+        stagger: { amount: 0.8, from: "random" },
       })
         .to(pieces, { y: 0.12, duration: 0.08, ease: "power1.out", yoyo: true, repeat: 1 }, ">-0.05")
         .from("[data-loader-name]", { yPercent: 110, duration: 0.7, ease: "expo.out" }, "-=0.35")
