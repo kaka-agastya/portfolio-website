@@ -1,36 +1,49 @@
-import Section from "../../components/Section";
+import Section, { CellGrid } from "../../components/Section";
+import Reveal from "@/components/Reveal";
 import { education, awards } from "@/data/cv";
 
 export default function Education() {
   return (
-    <Section id="education" index="03" title="Education & Awards">
-      <div className="grid lg:grid-cols-2 gap-14">
-        <div className="space-y-8">
+    <Section
+      id="education"
+      index="03"
+      label="Education"
+      title="Learning, then teaching back."
+      intro="Information Systems at ITS, alongside scholarships and competitions that pushed the work beyond the classroom."
+    >
+      <CellGrid className="lg:grid-cols-2">
+        <Reveal stagger={0.08} className="grid gap-px bg-guide">
           {education.map((e, i) => (
-            <div key={i}>
-              <p className="font-mono text-xs text-ink-mute">{e.period}</p>
-              <h3 className="font-display text-lg font-medium mt-1">{e.school}</h3>
-              <p className="text-sm text-ink-soft mt-1">{e.program}</p>
-              <ul className="mt-3 space-y-1">
+            <div key={i} className="flex flex-col gap-4 bg-bg p-5 sm:p-8 xl:p-10">
+              <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">{e.period}</p>
+              <h3 className="font-display text-2xl font-medium tracking-tight lg:text-3xl">{e.school}</h3>
+              <p className="text-sm text-fg-muted">{e.program}</p>
+              <div className="flex flex-wrap gap-2">
                 {e.notes.map((n, j) => (
-                  <li key={j} className="text-sm text-ink-mute">- {n}</li>
+                  <span key={j} className="border border-current px-2 py-1 font-mono text-[11px]">
+                    {n}
+                  </span>
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
-        </div>
-        <div>
-          <p className="font-mono text-[11px] uppercase tracking-wide text-ink-mute mb-4">Awards & Honors</p>
-          <div className="space-y-4">
+        </Reveal>
+
+        <div className="bg-bg p-5 sm:p-8 xl:p-10">
+          <p className="mb-6 font-mono text-xs uppercase tracking-wider text-fg-muted">Awards & Honors</p>
+          <Reveal stagger={0.08} className="flex flex-col">
             {awards.map((a, i) => (
-              <div key={i} className="border-l-2 border-line pl-4">
-                <p className="text-sm font-medium">{a.title}</p>
-                <p className="text-xs text-ink-mute mt-0.5">{a.org}</p>
+              <div key={i} className="grid grid-cols-[2.5rem_1fr] gap-2 border-t border-guide py-5 first:border-t-0 first:pt-0">
+                <span className="font-mono text-xs text-fg-muted">{String(i + 1).padStart(2, "0")}</span>
+                <div>
+                  <p className="font-medium">{a.title}</p>
+                  <p className="mt-1 text-sm text-fg-muted">{a.org}</p>
+                </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
-      </div>
+      </CellGrid>
     </Section>
   );
 }
