@@ -114,7 +114,7 @@ export default function Mascot({
   );
 
   const rightArm =
-    pose === "wave" ? "M150 168 q26 -8 30 -44" : "M150 168 q20 10 24 30";
+    pose === "wave" ? "M150 168 q26 -8 30 -44" : "M150 168 q18 10 15 32";
 
   return (
     <svg ref={ref} viewBox="0 0 220 262" className={className} aria-hidden="true">
@@ -143,9 +143,12 @@ export default function Mascot({
             <circle cx={180} cy={122} r={10} className="fill-paper" {...line} strokeWidth={4} />
           ) : (
             <g>
-              <rect x={156} y={186} width={48} height={34} rx={4} className="fill-paper" {...line} strokeWidth={4} transform="rotate(-8 180 203)" />
-              <path d="M158 190 l22 16 l22 -18" fill="none" {...line} strokeWidth={3.5} transform="rotate(-8 180 203)" />
-              <circle cx={174} cy={198} r={9} className="fill-paper" {...line} strokeWidth={4} />
+              {/* Envelope held by its left edge */}
+              <g transform="rotate(8 184 206)">
+                <rect x={162} y={190} width={46} height={32} rx={4} className="fill-paper" {...line} strokeWidth={4} />
+                <path d="M164 193 l21 15 l21 -15" fill="none" {...line} strokeWidth={3.5} />
+              </g>
+              <circle cx={165} cy={200} r={9} className="fill-paper" {...line} strokeWidth={4} />
             </g>
           )}
         </g>
@@ -183,9 +186,11 @@ export default function Mascot({
           )}
           {accessory === "cap" && (
             <g>
-              <path d="M48 36 q62 -44 124 0 z" className="fill-rose" {...line} strokeWidth={4} />
-              <path d="M150 30 q34 -2 46 10 l-40 6" className="fill-rose" {...line} strokeWidth={4} />
-              <circle cx={110} cy={9} r={5} className="fill-line" />
+              {/* Brim pokes out to the side; the crown covers its base */}
+              <path d="M150 32 Q194 24 210 40 Q192 50 150 44 Z" className="fill-rose" {...line} strokeWidth={4} />
+              <path d="M38 44 Q38 10 110 10 Q182 10 182 44 Z" className="fill-rose" {...line} strokeWidth={4} />
+              <path d="M110 12 V42 M76 18 Q70 30 72 42 M144 18 Q150 30 148 42" fill="none" {...line} strokeWidth={2.5} opacity={0.45} />
+              <circle cx={110} cy={10} r={5.5} className="fill-line" />
             </g>
           )}
         </g>
