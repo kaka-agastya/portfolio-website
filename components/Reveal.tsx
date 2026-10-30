@@ -1,54 +1,40 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 
+// Fades children up as they scroll into view. With `stagger`, each direct child animates in turn.
 export default function Reveal({
   children,
   delay = 0,
+  stagger,
   className = "",
 }: {
   children: React.ReactNode;
   delay?: number;
+  stagger?: number;
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const currentRef = ref.current;
-    if (!currentRef) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(currentRef);
-        }
-      },
-      {
-        rootMargin: "-80px",
-      }
-    );
-
-    observer.observe(currentRef);
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
+  useGSAP(
+    () => {
+      const el = ref.current;
+      if (!el || prefersReducedMotion()) return;
+      gsap.from(stagger ? el.children : el, {
+        y: 24,
+        autoAlpha: 0,
+        duration: 0.9,
+        ease: "expo.out",
+        delay,
+        stagger,
+        scrollTrigger: { trigger: el, start: "top 88%", once: true },
+      });
+    },
+    { scope: ref }
+  );
 
   return (
-    <div
-      ref={ref}
-      style={{
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translateY(0)" : "translateY(16px)",
-        transition: `opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)`,
-        transitionDelay: `${delay}s`,
-      }}
-      className={className}
-    >
+    <div ref={ref} className={className}>
       {children}
     </div>
   );
