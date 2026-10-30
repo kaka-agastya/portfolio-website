@@ -293,3 +293,10 @@ export const awards = [
     org: "Institut Teknologi Sepuluh Nopember",
   },
 ];
+
+export const highlights = [
+  { value: 3.94, decimals: 2, label: "GPA", note: "Information Systems, ITS" },
+  { value: 98, label: "Lighthouse performance", note: "WANIGO company profile" },
+  { value: 1, prefix: "<", suffix: "h", label: "Onboarding per 100 students", note: "Down from 3–4 hours with Rifnity automation" },
+  { value: experience.length, label: "Teams & committees", note: "Frontend roles since 2024" },
+];
