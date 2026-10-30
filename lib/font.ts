@@ -1,24 +1,24 @@
-import { Poppins as Poppin,  Space_Grotesk, Fira_Code } from 'next/font/google'
+import { Inter as InterFont, Space_Grotesk, Geist_Mono } from 'next/font/google'
 
-export const Poppins = Poppin({
+export const Inter = InterFont({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
   display: 'swap',
-  variable: '--font-Poppins',
+  variable: '--font-Inter',
   preload: true,
 })
 
 export const Space = Space_Grotesk({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  weight: ['400', '500', '600'],
   display: 'swap',
   variable: '--font-Space',
   preload: true,
 })
-export const FiraCode = Fira_Code({
+
+export const GeistMono = Geist_Mono({
   subsets: ['latin'],
-  weight: ['400', '600', '700'],
+  weight: ['400', '500'],
   display: 'swap',
-  variable: '--font-FiraCode',
+  variable: '--font-GeistMono',
   preload: true,
 })

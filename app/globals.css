@@ -1,66 +1,96 @@
 @import "tailwindcss";
 
-@theme {
-  --color-paper: #FFFFFF;
-  --color-ink: #0A0A0A;
-  --color-ink-soft: #4A4A4A;
-  --color-ink-mute: #737373;
-  --color-line: #E5E5E5;
+@custom-variant dark (&:where(.dark, .dark *));
 
-  --font-display: var(--font-Space), sans-serif;
-  --font-body: var(--font-Poppins), sans-serif;
-  --font-mono: var(--font-FiraCode), monospace;
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-guide: var(--guide);
 
-  --width-content: 1120px;
+  --font-display: var(--font-Space), Arial, sans-serif;
+  --font-body: var(--font-Inter), Arial, sans-serif;
+  --font-mono: var(--font-GeistMono), ui-monospace, monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Light mode (default) ─────────────────────────── */
+/* ── Light mode (default): ivory paper, blue ink ───────────── */
 :root {
-  --color-paper: #FFFFFF;
-  --color-ink: #0A0A0A;
-  --color-ink-soft: #4A4A4A;
-  --color-ink-mute: #737373;
-  --color-line: #E5E5E5;
+  --bg: #f4f2e8;
+  --bg-soft: #ebe7d8;
+  --fg: #0755b5;
+  --fg-muted: #326daa;
+  --guide: color-mix(in srgb, var(--fg) 40%, transparent);
 }
 
-/* ── Dark mode ────────────────────────────────────── */
+/* ── Dark mode: deep navy paper, ivory ink ─────────────────── */
 .dark {
-  --color-paper: #0D0D0D;
-  --color-ink: #F5F5F5;
-  --color-ink-soft: #D0D0D0;
-  --color-ink-mute: #8A8A8A;
-  --color-line: #2E2E2E;
+  --bg: #061a36;
+  --bg-soft: #0a2447;
+  --fg: #f4f2e8;
+  --fg-muted: color-mix(in srgb, #f4f2e8 70%, #061a36);
+  --guide: color-mix(in srgb, var(--fg) 25%, transparent);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 ::selection {
-  background-color: var(--color-ink);
-  color: var(--color-paper);
+  background-color: var(--fg);
+  color: var(--bg);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-ink);
+  outline: 2px solid var(--fg);
   outline-offset: 3px;
 }
 
-@keyframes caret-blink {
-  0%, 45% { opacity: 1; }
-  50%, 95% { opacity: 0; }
-  100% { opacity: 1; }
+/* Inverted block: swaps paper and ink inside it */
+.invert-block {
+  background-color: var(--fg);
+  color: var(--bg);
+  --guide: color-mix(in srgb, var(--bg) 30%, transparent);
 }
-.caret { animation: caret-blink 1.1s steps(1) infinite; }
 
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Animated underline for text links */
+.link-line {
+  position: relative;
 }
-.fade-up { animation: fade-up 0.6s ease-out both; }
+.link-line::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+}
+.group:hover .link-line::after,
+.group:focus-visible .link-line::after,
+.link-line:hover::after {
+  transform: scaleX(1);
+}
+
+/* Loader failsafe: hide even if JS never runs */
+@keyframes loader-failsafe {
+  to { visibility: hidden; }
+}
+.loader-failsafe {
+  animation: loader-failsafe 0s linear 6s forwards;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  * { transition-duration: 0.001ms !important; }
 }
