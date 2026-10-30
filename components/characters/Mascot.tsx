@@ -92,7 +92,9 @@ export default function Mascot({
       // Eyes and head follow the pointer.
       const eyeX = gsap.quickTo(q("[data-eyes]"), "x", { duration: 0.4, ease: "power3.out" });
       const eyeY = gsap.quickTo(q("[data-eyes]"), "y", { duration: 0.4, ease: "power3.out" });
-      const tilt = gsap.quickTo(q("[data-head]"), "rotate", { duration: 0.8, ease: "power3.out" });
+      // quickTo needs GSAP's internal name ("rotation"), not the "rotate" alias.
+      gsap.set(q("[data-head]"), { svgOrigin: "110 140" });
+      const tilt = gsap.quickTo(q("[data-head]"), "rotation", { duration: 0.8, ease: "power3.out" });
       const move = (e: PointerEvent) => {
         const r = el.getBoundingClientRect();
         const dx = gsap.utils.clamp(-1, 1, (e.clientX - (r.left + r.width / 2)) / (window.innerWidth / 2));
@@ -102,7 +104,6 @@ export default function Mascot({
         tilt(dx * 5);
       };
       window.addEventListener("pointermove", move);
-      gsap.set(q("[data-head]"), { svgOrigin: "110 140" });
 
       return () => {
         stop();
