@@ -30,10 +30,10 @@
 
 /* ── Dark mode: deep navy paper, ivory ink ─────────────────── */
 .dark {
-  --paper: #0a1638;
-  --paper-soft: #111f4a;
+  --paper: #1c2647;
+  --paper-soft: #253054;
   --ink: #f4f2e8;
-  --ink-muted: color-mix(in srgb, #f4f2e8 70%, #0a1638);
+  --ink-muted: color-mix(in srgb, #f4f2e8 72%, #1c2647);
   --guide-mix: 25%;
 }
 
