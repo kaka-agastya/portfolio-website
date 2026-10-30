@@ -1,5 +1,9 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
+import { gsap, prefersReducedMotion } from "@/lib/gsap";
+
+// Height of the sticky nav, so anchored sections don't hide beneath it.
+const NAV_OFFSET = 48;
 
 type Theme = "light" | "dark";
 
@@ -20,8 +24,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.classList.toggle("dark", initial === "dark");
   }, []);
 
-  // JS smooth scroll — CSS scroll-behavior is unreliable on iOS Safari.
-  // We intercept every in-page anchor click and use scrollIntoView instead.
+  // GSAP smooth scroll — CSS scroll-behavior is unreliable on iOS Safari.
+  // We intercept every in-page anchor click and tween the window instead.
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -32,11 +36,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       if (!href?.startsWith("#")) return;
 
       const id = href.slice(1);
-      const el = document.getElementById(id);
+      const el = id ? document.getElementById(id) : document.body;
       if (!el) return;
 
       e.preventDefault();
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      gsap.to(window, {
+        scrollTo: { y: el, offsetY: id ? NAV_OFFSET : 0, autoKill: true },
+        duration: prefersReducedMotion() ? 0 : 1.1,
+        ease: "expo.inOut",
+      });
 
       // Update URL hash without jumping
       history.pushState(null, "", href);
