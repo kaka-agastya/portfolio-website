@@ -15,7 +15,7 @@ export default function Hero() {
         <div className="flex flex-col gap-8">
           <Reveal intro>
             <p className="inline-flex -rotate-2 items-center gap-2 rounded-full border-2 border-line bg-mint px-4 py-1.5 text-sm font-medium shadow-brutal-sm">
-              <span aria-hidden="true">👋</span> Hi, I&apos;m {profile.name.split(" ")[0]} — {profile.role}
+              <span aria-hidden="true">👋</span> Hi, I&apos;m {profile.name.split(" ")[0]} - {profile.role}
             </p>
           </Reveal>
           <SplitHeading
