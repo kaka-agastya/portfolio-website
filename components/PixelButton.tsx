@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
 const PIXEL = 8;
 
@@ -17,7 +17,7 @@ export default function PixelButton({ href, children, variant = "primary", exter
   const ref = useRef<HTMLAnchorElement>(null);
   const fill = useRef<HTMLSpanElement>(null);
 
-  const { contextSafe } = useGSAP({ scope: ref });
+  const swap = useRef<gsap.core.Tween>(null);
 
   const ensurePixels = () => {
     const el = ref.current;
@@ -38,11 +38,12 @@ export default function PixelButton({ href, children, variant = "primary", exter
     return Array.from(box.children);
   };
 
-  const animate = contextSafe((on: boolean) => {
+  const animate = (on: boolean) => {
     const el = ref.current;
     if (!el) return;
     const pixels = ensurePixels();
     gsap.killTweensOf(pixels);
+    swap.current?.kill();
     if (prefersReducedMotion()) {
       gsap.set(pixels, { opacity: on ? 1 : 0 });
       el.toggleAttribute("data-filled", on);
@@ -53,8 +54,8 @@ export default function PixelButton({ href, children, variant = "primary", exter
       duration: 0.01,
       stagger: { amount: 0.22, from: "random" },
     });
-    gsap.delayedCall(0.11, () => el.toggleAttribute("data-filled", on));
-  });
+    swap.current = gsap.delayedCall(0.11, () => el.toggleAttribute("data-filled", on));
+  };
 
   const base =
     "group relative inline-flex h-12 items-center justify-center overflow-hidden border px-5 text-sm leading-none whitespace-nowrap transition-colors duration-150";

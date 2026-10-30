@@ -1,6 +1,6 @@
 "use client";
 import { useId, useRef, useState } from "react";
-import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
+import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
 function PlusIcon({ open }: { open: boolean }) {
   return (
@@ -32,9 +32,7 @@ export default function Collapsible({
   const panel = useRef<HTMLDivElement>(null);
   const id = useId();
 
-  const { contextSafe } = useGSAP({ scope: root });
-
-  const toggle = contextSafe(() => {
+  const toggle = () => {
     const el = panel.current;
     if (!el) return;
     const next = !open;
@@ -46,7 +44,7 @@ export default function Collapsible({
       duration: prefersReducedMotion() ? 0 : 0.6,
       ease: "expo.inOut",
     });
-  });
+  };
 
   return (
     <div ref={root} className={className}>
