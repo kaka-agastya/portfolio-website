@@ -5,21 +5,34 @@
   --color-bg-soft: var(--bg-soft);
   --color-fg: var(--fg);
   --color-fg-muted: var(--fg-muted);
-  --color-guide: var(--guide);
+  --color-line: var(--line);
+  --color-cobalt: var(--cobalt);
+  --color-sun: var(--sun);
+  --color-rose: var(--rose);
+  --color-mint: var(--mint);
+  --color-paper: var(--paper);
 
   --font-display: var(--font-Space), Arial, sans-serif;
   --font-body: var(--font-Inter), Arial, sans-serif;
   --font-mono: var(--font-GeistMono), ui-monospace, monospace;
 
+  --shadow-brutal-sm: 3px 3px 0 0 var(--line);
+  --shadow-brutal: 6px 6px 0 0 var(--line);
+  --shadow-brutal-lg: 10px 10px 0 0 var(--line);
+
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Palette: ivory paper, cobalt ink ──────────────────────── */
+/* ── Palette: ivory paper, black ink, cobalt + playful accents ── */
 :root {
   --paper: #f4f2e8;
   --paper-soft: #ebe7d8;
-  --ink: #2448c9;
-  --ink-muted: #4a5fb8;
+  --ink: #16161d;
+  --ink-muted: #4d4d58;
+  --cobalt: #2448c9;
+  --sun: #ffcd45;
+  --rose: #ff94c8;
+  --mint: #7cdcb4;
 }
 
 /* Semantic roles that components use */
@@ -28,7 +41,7 @@
   --bg-soft: var(--paper-soft);
   --fg: var(--ink);
   --fg-muted: var(--ink-muted);
-  --guide: color-mix(in srgb, var(--fg) 40%, transparent);
+  --line: var(--ink);
 }
 
 html {
@@ -39,12 +52,11 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 ::selection {
-  background-color: var(--fg);
-  color: var(--bg);
+  background-color: var(--sun);
+  color: var(--ink);
 }
 
 :focus-visible {
@@ -52,15 +64,24 @@ body {
   outline-offset: 3px;
 }
 
-/* Inverted block: swaps paper and ink for everything inside it */
+/* Cobalt block: light text on brand blue; outlines stay black */
 .invert-block {
-  --bg: var(--ink);
-  --bg-soft: color-mix(in srgb, var(--ink) 88%, var(--paper));
+  --bg: var(--cobalt);
+  --bg-soft: color-mix(in srgb, var(--cobalt) 85%, var(--paper));
   --fg: var(--paper);
-  --fg-muted: color-mix(in srgb, var(--paper) 75%, var(--ink));
-  --guide: color-mix(in srgb, var(--paper) 30%, transparent);
+  --fg-muted: color-mix(in srgb, var(--paper) 78%, var(--cobalt));
   background-color: var(--bg);
   color: var(--fg);
+}
+
+/* Neo-brutalist card that lifts toward its shadow on hover */
+.lift {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+.lift:hover,
+.lift:focus-within {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 0 var(--line);
 }
 
 /* Animated underline for text links */
@@ -72,7 +93,7 @@ body {
   position: absolute;
   inset-inline: 0;
   bottom: -3px;
-  height: 1px;
+  height: 2px;
   background: currentColor;
   transform: scaleX(0);
   transform-origin: left;
