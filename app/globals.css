@@ -18,20 +18,29 @@
 
 /* ── Light mode (default): ivory paper, blue ink ───────────── */
 :root {
-  --bg: #f4f2e8;
-  --bg-soft: #ebe7d8;
-  --fg: #0755b5;
-  --fg-muted: #326daa;
-  --guide: color-mix(in srgb, var(--fg) 40%, transparent);
+  --paper: #f4f2e8;
+  --paper-soft: #ebe7d8;
+  --ink: #0755b5;
+  --ink-muted: #326daa;
+  --guide-mix: 40%;
 }
 
 /* ── Dark mode: deep navy paper, ivory ink ─────────────────── */
 .dark {
-  --bg: #061a36;
-  --bg-soft: #0a2447;
-  --fg: #f4f2e8;
-  --fg-muted: color-mix(in srgb, #f4f2e8 70%, #061a36);
-  --guide: color-mix(in srgb, var(--fg) 25%, transparent);
+  --paper: #061a36;
+  --paper-soft: #0a2447;
+  --ink: #f4f2e8;
+  --ink-muted: color-mix(in srgb, #f4f2e8 70%, #061a36);
+  --guide-mix: 25%;
+}
+
+/* Semantic roles that components use */
+:root {
+  --bg: var(--paper);
+  --bg-soft: var(--paper-soft);
+  --fg: var(--ink);
+  --fg-muted: var(--ink-muted);
+  --guide: color-mix(in srgb, var(--fg) var(--guide-mix), transparent);
 }
 
 html {
@@ -55,11 +64,15 @@ body {
   outline-offset: 3px;
 }
 
-/* Inverted block: swaps paper and ink inside it */
+/* Inverted block: swaps paper and ink for everything inside it */
 .invert-block {
-  background-color: var(--fg);
-  color: var(--bg);
-  --guide: color-mix(in srgb, var(--bg) 30%, transparent);
+  --bg: var(--ink);
+  --bg-soft: color-mix(in srgb, var(--ink) 88%, var(--paper));
+  --fg: var(--paper);
+  --fg-muted: color-mix(in srgb, var(--paper) 75%, var(--ink));
+  --guide: color-mix(in srgb, var(--paper) 30%, transparent);
+  background-color: var(--bg);
+  color: var(--fg);
 }
 
 /* Animated underline for text links */

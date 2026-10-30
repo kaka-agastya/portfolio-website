@@ -1,36 +1,52 @@
-import { profile } from "@/data/cv";
+import { profile, skills } from "@/data/cv";
 import { ArrowDownRight } from "lucide-react";
-import { TypewriterText } from "@/components/TypewriterText";
+import SplitHeading from "@/components/SplitHeading";
+import Reveal from "@/components/Reveal";
+import PixelButton from "@/components/PixelButton";
+import HeroArt from "@/components/HeroArt";
+import Marquee from "@/components/Marquee";
 
 export default function Hero() {
   return (
-    <section id="intro" className="min-h-screen flex flex-col justify-center px-6 lg:px-32 xl:px-40 max-w-content mx-auto">
+    <section
+      id="intro"
+      className="grid min-h-[calc(100svh-4rem)] grid-rows-[auto_1fr] border-b border-guide lg:min-h-[calc(100dvh-3rem)]"
+    >
+      <div className="flex min-h-[max(16rem,30svh)] flex-col justify-center gap-6 px-5 py-10 sm:px-8 lg:px-16 xl:px-24">
+        <Reveal intro className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs uppercase tracking-wider text-fg-muted">
+          <span className="size-1.5 bg-current" aria-hidden="true" />
+          <span>{profile.name}</span>
+          <span aria-hidden="true">·</span>
+          <span>{profile.location}</span>
+        </Reveal>
+        <SplitHeading
+          as="h1"
+          intro
+          delay={0.1}
+          className="max-w-5xl font-display text-5xl font-medium leading-[1.02] tracking-tight text-balance sm:text-6xl lg:text-7xl xl:text-8xl"
+        >
+          Interfaces that load fast and feel right.
+        </SplitHeading>
+      </div>
 
-      <div className="fade-up border border-line rounded-b-md rounded-tr-md p-8 lg:p-14 bg-[var(--color-paper)]">
-        <p aria-hidden="true" className="font-mono text-xs text-ink-mute mb-6">
-          <span className="text-ink">const</span> role <span className="text-ink">=</span>{" "}
-          <TypewriterText text={profile.role} />
-          <span className="caret">▍</span>
-        </p>
-        <p className="sr-only">const role = &quot;{profile.role}&quot;</p>
-
-        <h1 className="font-display text-4xl sm:text-6xl lg:text-7xl font-medium tracking-tight text-balance leading-[1.05]">
-          {profile.name}
-        </h1>
-
-        <p className="mt-8 max-w-2xl text-ink-soft text-base lg:text-lg leading-relaxed">
-          {profile.summary}
-        </p>
-
-        <div className="mt-10 flex flex-wrap items-center gap-6">
-          <a
-            href="#experience"
-            className="group inline-flex items-center gap-2 font-mono text-sm border border-ink px-5 py-3 rounded-md hover:bg-ink hover:text-white transition-colors"
-          >
-            View experience <ArrowDownRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
-          </a>
-          <span className="font-mono text-xs text-ink-mute">{profile.location}</span>
+      <div className="invert-block grid grid-rows-[1fr_auto]">
+        <div className="grid gap-12 px-5 py-12 sm:px-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-end lg:gap-20 lg:px-16 lg:py-16 xl:px-24">
+          <Reveal intro delay={0.35} stagger={0.08} className="flex max-w-xl flex-col gap-8">
+            <p className="font-mono text-xs uppercase tracking-wider text-fg-muted">{profile.role}</p>
+            <p className="text-base leading-relaxed lg:text-lg">{profile.summary}</p>
+            <div className="flex flex-wrap gap-3">
+              <PixelButton href="#contact">Get in touch</PixelButton>
+              <PixelButton href="#projects" variant="secondary">
+                View projects <ArrowDownRight size={16} />
+              </PixelButton>
+            </div>
+          </Reveal>
+          <HeroArt />
         </div>
+        <Marquee
+          items={skills.stack}
+          className="border-t border-guide py-4 font-mono text-xs uppercase tracking-wider"
+        />
       </div>
     </section>
   );
