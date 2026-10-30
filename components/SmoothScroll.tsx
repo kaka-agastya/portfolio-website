@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { gsap, prefersReducedMotion } from "@/lib/gsap";
 
 // Height of the sticky nav, so anchored sections don't hide beneath it.
-const NAV_OFFSET = 48;
+const NAV_OFFSET = 92;
 
 // GSAP smooth scroll — CSS scroll-behavior is unreliable on iOS Safari.
 // We intercept every in-page anchor click and tween the window instead.
