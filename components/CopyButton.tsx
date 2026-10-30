@@ -20,7 +20,7 @@ export function CopyButton({ text, label }: { text: string; label: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="-m-1.5 p-1.5 text-fg-muted transition-colors hover:text-fg active:scale-95"
+      className="-m-1.5 rounded-md p-1.5 transition-colors hover:bg-line hover:text-paper active:scale-95"
       aria-label={copied ? "Copied!" : label}
       title={copied ? "Copied!" : label}
     >
