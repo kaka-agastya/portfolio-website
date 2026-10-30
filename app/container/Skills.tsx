@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import GithubActivity from "@/components/GithubActivity";
-import Section from "../../components/Section";
+import Section, { CellGrid } from "../../components/Section";
+import Reveal from "@/components/Reveal";
 import { skills } from "@/data/cv";
 
 const groups: { label: string; items: string[] }[] = [
@@ -13,31 +14,35 @@ const groups: { label: string; items: string[] }[] = [
 
 export default function Skills() {
   return (
-    <Section id="skills" index="04" title="Skills">
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {groups.map((g) => (
-          <div key={g.label}>
-            <p className="font-mono text-[11px] uppercase tracking-wide text-ink-mute mb-3">
-              {g.label}
+    <Section
+      id="skills"
+      index="04"
+      label="Skills"
+      title="The toolkit behind the work."
+      intro="A React and Next.js core, the tooling to ship it reliably, and the people skills to keep a team moving."
+    >
+      <CellGrid className="sm:grid-cols-2 lg:grid-cols-3">
+        {groups.map((g, i) => (
+          <Reveal key={g.label} delay={(i % 3) * 0.06} className="bg-bg p-5 sm:p-8 xl:p-10">
+            <p className="mb-6 flex items-center justify-between font-mono text-xs uppercase tracking-wider text-fg-muted">
+              <span>{g.label}</span>
+              <span>{String(g.items.length).padStart(2, "0")}</span>
             </p>
-            <div className="flex flex-wrap gap-2">
+            <ul className="flex flex-wrap gap-2">
               {g.items.map((item) => (
-                <span
-                  key={item}
-                  className="text-sm border border-line rounded px-3 py-1.5 text-ink-soft"
-                >
+                <li key={item} className="border border-guide px-3 py-1.5 text-sm transition-colors hover:border-current">
                   {item}
-                </span>
+                </li>
               ))}
-            </div>
-          </div>
+            </ul>
+          </Reveal>
         ))}
-      </div>
-      <div className="mt-14">
-        <Suspense fallback={<div className="border border-line rounded-md p-6 lg:p-8 animate-pulse bg-line/20 min-h-[220px]" />}>
-          <GithubActivity username="kaka-agastya" />
-        </Suspense>
-      </div>
+        <div className="bg-bg">
+          <Suspense fallback={<div className="min-h-55 animate-pulse bg-bg-soft" />}>
+            <GithubActivity username="kaka-agastya" />
+          </Suspense>
+        </div>
+      </CellGrid>
     </Section>
   );
 }

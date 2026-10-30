@@ -41,21 +41,16 @@ export default async function GithubActivity({ username }: { username: string })
   const total = await getGithubContributions();
 
   return (
-    <div className="border border-line rounded-md p-6 lg:p-8">
-      <div className="flex items-baseline justify-between mb-6 flex-wrap gap-2">
-        <p className="font-mono text-[11px] uppercase tracking-wide text-ink-mute">
-          GitHub Activity
-        </p>
-        <p className="font-mono text-sm text-ink">
-          {total !== null ? (
-            <>
-              <span className="font-medium">{total.toLocaleString("id-ID")}</span> contributions this year
-            </>
-          ) : (
-            <span className="text-ink-mute">Loading...</span>
-          )}
-        </p>
-      </div>
+    <div className="flex h-full flex-col justify-between gap-6 p-5 sm:p-8 xl:p-10">
+      <p className="flex items-center justify-between font-mono text-xs uppercase tracking-wider text-fg-muted">
+        <span>GitHub Activity</span>
+        <span>This year</span>
+      </p>
+
+      <p className="font-display text-5xl font-medium tracking-tight tabular-nums">
+        {total !== null ? total.toLocaleString("id-ID") : "—"}
+        <span className="mt-2 block font-body text-sm font-normal tracking-normal text-fg-muted">contributions</span>
+      </p>
 
       <div
         className="overflow-x-auto"
@@ -65,7 +60,7 @@ export default async function GithubActivity({ username }: { username: string })
       >
         {/* ⚡ Bolt: Deferred loading of off-screen chart image to improve initial LCP & bandwidth */}
         <img
-          src={`https://ghchart.rshah.org/0A0A0A/${username}`}
+          src={`https://ghchart.rshah.org/0755b5/${username}`}
           alt={`${username}'s GitHub contribution chart`}
           className="min-w-[600px]"
           loading="lazy"
