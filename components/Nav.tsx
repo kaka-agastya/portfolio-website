@@ -1,7 +1,5 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
 import PixelButton from "./PixelButton";
 import { gsap, useGSAP, prefersReducedMotion } from "@/lib/gsap";
 import { profile } from "@/data/cv";
@@ -25,7 +23,6 @@ function GithubIcon({ size = 18 }: { size?: number }) {
 export default function Nav() {
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
-  const { theme, toggle } = useTheme();
   const menu = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline>(null);
 
@@ -92,23 +89,16 @@ export default function Nav() {
         </nav>
 
         <div className="flex items-stretch">
-          <button
-            onClick={toggle}
-            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            className="flex w-12 items-center justify-center border-l border-guide transition-colors hover:bg-bg-soft"
-          >
-            {theme === "dark" ? <Sun size={16} strokeWidth={1.5} /> : <Moon size={16} strokeWidth={1.5} />}
-          </button>
           <a
             href={profile.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden w-12 items-center justify-center border-l border-guide transition-colors hover:bg-bg-soft sm:flex"
+            className="flex w-14 items-center justify-center border-l border-guide transition-colors hover:bg-bg-soft lg:w-12"
           >
             <GithubIcon />
             <span className="sr-only">GitHub (opens in a new tab)</span>
           </a>
-          <PixelButton href="#contact" className="!hidden !h-full border-y-0 border-r-0 lg:!inline-flex">
+          <PixelButton href="#contact" className="hidden! h-full! border-y-0 border-r-0 lg:inline-flex!">
             Get in touch
           </PixelButton>
           <button

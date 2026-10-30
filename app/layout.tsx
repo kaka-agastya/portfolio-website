@@ -3,7 +3,7 @@ import "./globals.css";
 import { GeistMono, Inter, Space } from "@/lib/font";
 import { Analytics } from "@vercel/analytics/next"
 import LoadingScreen from "@/components/LoadingScreen";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata: Metadata = {
   title: "Kaka Agastya Herlambang Wahyudi — Frontend Web Developer",
@@ -18,10 +18,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${Inter.variable} ${Space.variable} ${GeistMono.variable}`}>
       <Analytics/>
       <body>
-        <ThemeProvider>
-          <LoadingScreen />
-          {children}
-        </ThemeProvider>
+        <SmoothScroll />
+        <LoadingScreen />
+        {children}
       </body>
     </html>
   );

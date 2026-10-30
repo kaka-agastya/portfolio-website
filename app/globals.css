@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme inline {
   --color-bg: var(--bg);
   --color-bg-soft: var(--bg-soft);
@@ -16,25 +14,12 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Light mode (default): ivory paper, blue ink ───────────── */
+/* ── Palette: ivory paper, cobalt ink ──────────────────────── */
 :root {
   --paper: #f4f2e8;
   --paper-soft: #ebe7d8;
   --ink: #2448c9;
   --ink-muted: #4a5fb8;
-  --guide-mix: 40%;
-  /* Inverted blocks stay brand blue in both themes */
-  --accent: #2448c9;
-  --accent-ink: #f4f2e8;
-}
-
-/* ── Dark mode: deep navy paper, ivory ink ─────────────────── */
-.dark {
-  --paper: #1c2647;
-  --paper-soft: #253054;
-  --ink: #f4f2e8;
-  --ink-muted: color-mix(in srgb, #f4f2e8 72%, #1c2647);
-  --guide-mix: 25%;
 }
 
 /* Semantic roles that components use */
@@ -43,7 +28,7 @@
   --bg-soft: var(--paper-soft);
   --fg: var(--ink);
   --fg-muted: var(--ink-muted);
-  --guide: color-mix(in srgb, var(--fg) var(--guide-mix), transparent);
+  --guide: color-mix(in srgb, var(--fg) 40%, transparent);
 }
 
 html {
@@ -69,11 +54,11 @@ body {
 
 /* Inverted block: swaps paper and ink for everything inside it */
 .invert-block {
-  --bg: var(--accent);
-  --bg-soft: color-mix(in srgb, var(--accent) 88%, var(--accent-ink));
-  --fg: var(--accent-ink);
-  --fg-muted: color-mix(in srgb, var(--accent-ink) 75%, var(--accent));
-  --guide: color-mix(in srgb, var(--accent-ink) 30%, transparent);
+  --bg: var(--ink);
+  --bg-soft: color-mix(in srgb, var(--ink) 88%, var(--paper));
+  --fg: var(--paper);
+  --fg-muted: color-mix(in srgb, var(--paper) 75%, var(--ink));
+  --guide: color-mix(in srgb, var(--paper) 30%, transparent);
   background-color: var(--bg);
   color: var(--fg);
 }
